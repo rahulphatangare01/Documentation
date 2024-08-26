@@ -1,0 +1,50 @@
+Requirement Point
+
+Basic Points :- 
+              
+            1. tech Stack
+            2. Browser- Support
+            3. Compatability
+
+
+Example 
+  Create  UI Library 
+
+Requirement :- 
+     
+    ** Basic Points :- 
+                    1. Tech stack 
+                           Typescript Javascript 
+                    2. Bundler 
+                        Webpack,Eslint, Rollup
+                    3. Browser Support 
+                    4. Compatability
+        
+        Provider
+        Component
+        Design Pattern 
+        Data Binding 
+        Evens 
+        Themes 
+        Styling 
+        Layouts 
+        Configration 
+        Intigration 
+        Documentation 
+        Migration 
+        Constants Enums 
+        Transition & Animation 
+
+After package Build successfully In Documentation
+
+     1. Extensibility 
+     2. Intigrability 
+     3. State Management 
+     4. Context 
+     5. Data Management 
+     6. Injection 
+     7. Form Handling 
+     8. Error management 
+     
+
+           
