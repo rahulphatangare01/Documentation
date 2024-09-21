@@ -1,0 +1,21 @@
+SYSTEM DESGIN
+
+     Objective of system Desgin 
+	           1. Practicality
+			   2. Accurancy
+			   3. Reilablity
+			   4. Scalable
+			   5. optimization
+			   6. Efficient
+			  
+
+
+Differnt type of Software Architecture Pattern :
+                                                 1. Layered pattern 
+                                                 2. Client-server Pattern
+                                                 3. Event-Driven Pattern
+												 4. Mocrokernal Pattern
+												 5. Microservices pattern
+												 								  
+								  
+								  
