@@ -1,0 +1,20 @@
+About Git 
+
+  1. Git is an open source distibuted version control system.
+  2. Desgin to handle everything from small  to very large projects with speed and efficiency.
+  3. It outclasses SCM tools (Software configration Management) like Subversion , CVS, perforce, and clearCase with features like chep local branching, convenient staging areas and multiple workflows
+
+
+other version control system (VCS) similar to GIT 
+
+  1. Distributed VCS: 
+      1. Mercurial 
+      2. Bazaar
+      3. Darcs
+
+  2. Cloud based VCS:
+      1. Bitbucket
+      2. GitHub
+      3. GitLab
+
+
