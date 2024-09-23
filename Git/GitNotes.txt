@@ -18,3 +18,42 @@ other version control system (VCS) similar to GIT
       3. GitLab
 
 
+
+What is version control 
+    History Tracking 
+    collaborative history tracking 
+
+    1. Git is fast and modern implementation of version comtrol 
+    2. Git provides a history of content changes 
+    3. Fit facilites collaborative changes to file
+    4. Git is easy to use for any type of knowledge worker
+
+
+What is Git 
+   1. Distributed so that connectivity dosen't block work 
+   2. Easy so that learning its commands can happen progressively.
+    
+    Basic commands of git 
+         git init   --- intialization on git in projects
+         git add .  --- add all changes in file into git 
+         git commit -m "intial commet"  --- basic commit of chages 
+
+    Distributed Git 
+        Team centric so that collaboration happens naturally
+
+    git checkout <Branch Name>    --- Change the branch 
+    git commit -m "changes in file" --- commit the code in differnt branch
+    git push     --- push the code in respective branch
+    git push  origin <Branch Name>  --- push code on metion in branch
+    git pull  --- pull the code from respective branch 
+    git merge <branch Name> --- merge the code from mention branch into current branch
+
+
+Advanced git 
+     1. Customizable Git 
+          1. Flexible so that it fits your need insted of the other way around 
+           
+           git add -p myreport.markdown 
+           git commit -m "added latest statics"
+           git log --grapgh --decorate --addrev- commit --all pretty=online 
+      
