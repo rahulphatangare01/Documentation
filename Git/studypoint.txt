@@ -1,0 +1,36 @@
+*** Basic Git 
+        1. Version Control Concepts: Understand what version control is and why it's important.
+        2. Git Installation: Installing Git on your system.
+        3. Repository Basics: Initializing a repository (git init), cloning repositories (git clone).
+        4. Staging and Committing: Learn how to track files (git add, git commit).
+        5. Branching: Understand branching basics (git branch, git checkout), creating and switching between branches.
+        6. Remote Repositories: Connecting to remote repositories (GitHub, GitLab, Bitbucket), pushing and pulling changes (git push, git pull).
+        7. Viewing History: Reviewing commit history (git log), understanding commit hashes.
+        8. Git Status: Checking the state of the working directory (git status).
+        9. Basic Collaboration: Forking repositories, making pull requests.
+
+*** Advanced Git 
+        1. Branch Management: Merging branches (git merge), resolving conflicts.
+        2. Rebasing: Understanding git rebase and when to use it.
+        3. Stashing Changes: Temporarily saving changes with git stash.
+        4. Tagging: Using tags to mark releases (git tag).
+        5. Undoing Changes: Resetting commits (git reset), reverting changes (git revert), amending commits (git commit --amend).
+        6. Cherry-picking: Applying changes from specific commits (git cherry-pick).
+        7. Working with Multiple Remotes: Handling multiple remote repositories.
+        8. Reflog: Understanding and using the reflog (git reflog).
+        9. Interactive Rebase: Cleaning up commit history.
+        10. Git Hooks: Automating tasks with hooks (pre-commit, post-commit).
+        11. Bisecting: Using git bisect to find bugs by testing commits
+
+***  Pro Level Git 
+        1. Git Internals: Understanding how Git works under the hood (objects, blobs, trees).
+        2. Custom Git Aliases: Speeding up your workflow with custom aliases.
+        3. Advanced Merge Strategies: Using different merge strategies (fast-forward, squash merges).
+        4. Submodules: Managing repositories inside repositories (git submodule).
+        5. Rewriting History: Using git filter-branch or git rebase to modify commit history.
+        6. Performance Optimization: Optimizing large repositories.
+        7. Git Workflows: Understanding different workflows (Git Flow, GitHub Flow, trunk-based development).
+        8. Security: Managing sensitive data in Git (using .gitignore, secrets management).
+        9. Contributing to Open Source: Managing pull requests and code reviews effectively.
+        10. Advanced Conflict Resolution: Deep conflict resolution strategies for complex merges.
+        11. Maintaining Clean History: Squashing commits, creating meaningful commit messages.
