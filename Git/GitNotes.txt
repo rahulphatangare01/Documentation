@@ -57,3 +57,20 @@ Advanced git
            git commit -m "added latest statics"
            git log --grapgh --decorate --addrev- commit --all pretty=online 
       
+  
+
+git setup and config 
+ git config --global user.name "Rahul Phatangare"
+ git config --global use.email "rahulphatangare01@gmail.com"
+
+ create git repository 
+   git init projectName 
+    
+    create file.txt 
+    git add file.txt 
+    git commit -m "added File"
+
+
+
+
+  
