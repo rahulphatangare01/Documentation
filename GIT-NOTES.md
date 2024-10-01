@@ -346,3 +346,5 @@ Once you’ve made changes to your forked repository, you can submit a pull requ
 **Pull Requests**: A method for contributing changes from your fork back to the original repository. It allows for code review and discussion before the changes are merged.
 
 ## Branch Management: Merging branches (git merge), resolving conflicts
+
+Merging is the process of combining the work done in different branches into a single branch. Typically, a feature or bug fix is developed in a separate branch, and once it's completed, that branch is merged back into the main development branch
