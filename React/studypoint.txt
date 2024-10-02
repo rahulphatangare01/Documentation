@@ -1,0 +1,31 @@
+1. Basic Level (2-4 weeks)
+Objective: Get a foundational understanding of React and its core concepts.
+
+React Setup:
+
+Installation and environment setup (Node.js, npm/yarn, React app setup).
+Understanding the file structure of a React app (e.g., public, src).
+Core Concepts:
+
+JSX and components (functional and class components).
+Props and state.
+Handling events.
+Conditional rendering.
+Lists and keys.
+Basic Hooks:
+
+useState and useEffect.
+Handling side effects with useEffect.
+Component Lifecycle (for class components):
+
+componentDidMount, componentDidUpdate, componentWillUnmount.
+Styling in React:
+
+Inline styles, CSS modules, and styled-components.
+Basic Forms:
+
+Controlled components and form handling in React.
+Basic Routing:
+
+Setting up React Router (react-router-dom).
+Simple navigation between pages.
