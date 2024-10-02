@@ -18,7 +18,7 @@ useState and useEffect.
 Handling side effects with useEffect.
 Component Lifecycle (for class components):
 
-componentDidMount, componentDidUpdate, componentWillUnmount.
+componentDidMount, componentDidUpdate, componentWillUnmount.`
 Styling in React:
 
 Inline styles, CSS modules, and styled-components.
