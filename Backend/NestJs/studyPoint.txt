@@ -1,0 +1,74 @@
+**** 1. Basic Level (1-2 weeks):
+
+1. Introduction to NestJS
+2. Understanding the framework's architecture (Modules, Controllers, Services)
+3. Setting up a NestJS project
+4. Basic routing and controllers
+5. Dependency injection
+6. Using the CLI for common operations
+
+7. Core Concepts
+8. Introduction to Providers and Services
+9. Request lifecycle in NestJS
+10. Handling HTTP requests with decorators (@Get, @Post, etc.)
+11. Working with middlewares
+12. Basic Application Structure
+13. Creating modules and controllers
+14. Working with configuration (@nestjs/config)
+15. Error handling
+16. Data Handling
+17. Basic data validation using class-validator
+18. DTOs (Data Transfer Objects)
+
+
+
+**** 2. Advanced Level (2-4 weeks):
+1. Dependency Injection & Lifecycle
+2. In-depth understanding of Dependency Injection
+3. Provider scopes, Injection scopes, Singleton and Transient providers
+4. Working with Databases
+5. Integrating TypeORM or Mongoose with NestJS
+6. Defining entities and repositories (TypeORM) or schemas (Mongoose)
+7. Using migrations and managing database connections
+8. Authentication & Authorization
+9. Implementing JWT and OAuth
+10. Role-based access control (Guards)
+11. Secure routes and sensitive data handling
+12. WebSockets & Real-time Communication
+13. Implementing WebSockets with NestJS
+14. Working with @nestjs/websockets for real-time features
+15. Testing in NestJS
+16. Unit and e2e testing with Jest
+17. Testing strategies for services, controllers, and modules
+18. Microservices
+19. Introduction to Microservice architecture with NestJS
+20 .Message brokers (Redis, RabbitMQ, Kafka)
+21. Building microservice-based systems
+22. Time Estimate: 2-4 weeks for the advanced level depending on complexity and depth.
+
+**** Pro Level (4-6 weeks):
+1. Custom Decorators & Interceptors
+2. Writing custom decorators
+3. Working with interceptors for request/response handling and transformation
+4. Performance Optimization
+5. Profiling and optimizing NestJS applications
+6. Caching strategies (Redis integration)
+7. Load balancing and handling high traffic
+8. GraphQL Integration
+9. Using @nestjs/graphql
+10. Writing queries and mutations
+11. Subscriptions and advanced GraphQL features
+12. Event-Driven Architecture
+13. Using event-based patterns with NestJS
+14. Working with event emitters and subscribers
+15. Advanced Security
+16. Implementing rate limiting
+17. Securing applications from common web vulnerabilities (CSRF, XSS)
+18. Advanced JWT strategies (refresh tokens)
+19. Deployments & Scaling
+20. Best practices for deploying NestJS apps (Docker, Kubernetes)
+21. Setting up CI/CD pipelines for automated deployment
+22. Horizontal scaling strategies
+23. Monorepo Setup
+24. Using the NestJS monorepo architecture for large applications
+25. Managing multiple modules and services in a single repository
