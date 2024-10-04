@@ -1,0 +1,87 @@
+1. Basic Level (2-3 weeks)
+
+1. Introduction to MongoDB
+2. What is MongoDB and NoSQL databases?
+3. Differences between SQL and NoSQL databases.
+4. JSON and BSON formats.
+5. MongoDB Architecture
+        5.1 Documents.
+        5.2 collections.
+        5.3 databases.
+6. Replica sets and sharding (overview).
+7. Installation and Setup
+8. Install MongoDB on your machine.
+9. MongoDB Cloud (Atlas) setup.
+10. CRUD Operations
+        10.1 Create: insertOne(), insertMany().
+        10.2 Read: find(), findOne().
+        10.3 Update: updateOne(), updateMany().
+        10.4 Delete: deleteOne(), deleteMany().
+        10.5 Indexes
+11. Basic index creation and usage.
+12. Basic Aggregation
+13. Introduction to the aggregation pipeline.
+14. Simple queries with $match, $group, and $project.
+15. Basic Data Types
+        15.1 Strings.
+        15.2 Numbers.
+        15.3 Booleans.
+        15.4 Dates
+        15.5 Arrays
+        15.6 Embedded Documents.
+
+
+**** 2. Advanced Level (3-4 weeks)
+
+1. Data Modeling
+        1.1 Embedding vs. Referencing.
+        1.2 Relationships in MongoDB (one-to-one, one-to-many, many-to-many).
+        1.3 Schema design patterns (bucket pattern, extended reference pattern).
+2. Indexes (Advanced)
+        2.1 Compound indexes.
+        2.2 Multikey indexes.
+        2.3 Text and geospatial indexes.
+        2.4 Index performance analysis.
+3. Advanced Aggregation
+        3.1 Advanced pipeline stages like $lookup, $unwind, $facet, $bucket, $merge.
+        3.2 Data transformation and analysis.
+4. Transactions
+        4.1 Multi-document transactions.
+        4.2 ACID properties in MongoDB.
+5. Data Management
+        5.1 Backup and restore.
+        5.2 Sharding (in detail).
+        5.3 Replication (in detail).
+6. Performance Tuning
+        6.1 Profiling slow queries.
+        6.2 Optimizing queries and indexing strategies.
+
+
+**** 3. Pro Level (4-6 weeks)
+1. Scaling and Distributed Systems
+        1.1 Sharding strategies and deployment.
+        1.2 Managing replica sets and ensuring high availability.
+2. Security
+        2.1 Authentication and Authorization.
+        2.2 Role-based access control (RBAC).
+        2.3 Encrypted storage and network encryption.
+3. Monitoring and Optimization
+        3.1 Monitoring MongoDB performance.
+        3.2 Understanding and configuring MongoDB logging.
+        3.3 Using tools like MongoDB Compass, Ops Manager, or 3rd party monitoring tools.
+4. Advanced Aggregation (Pro Level)
+        4.1 Complex aggregations for reporting, real-time analytics, and data transformation.
+        4.2 Working with large datasets efficiently.
+5. Change Streams
+        5.1 Real-time data streaming from MongoDB.
+6. Deployment Strategies
+        6.1 Cloud deployments, replica sets, and sharding in production.
+        6.2 Backup strategies for large-scale production environments.
+7. Mongoose (In Detail)
+        7.1 Connecting Node.js applications to MongoDB using Mongoose.
+        7.2 Defining and managing schemas.
+        7.3 Mongoose Middleware (pre/post hooks).
+        7.4 Data validation, schema types, and custom validation.
+        7.5 Virtual fields, population, and advanced querying.
+        7.6 Transactions with Mongoose.
+        7.7 Error handling and best practices in production.
