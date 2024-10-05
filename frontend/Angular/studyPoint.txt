@@ -1,0 +1,86 @@
+**** 1. Basic Level (2-3 weeks)
+
+Key Concepts:
+
+1. Angular Setup & Basics:
+            1.1 Installing Angular CLI
+            1.2 Project structure and files
+            1.3 Angular modules (NgModule)
+2. Components & Templates:
+            2.1 Creating components
+            2.2 Data binding (Interpolation, Property binding, Event binding)
+            2.3 Directives (ngIf, ngFor, etc.)
+            2.4 Working with forms (Template-driven forms)
+3. Routing:
+            3.1 Basic routing setup
+            3.2 Nested routes
+            3.3 Route parameters
+4. Services & Dependency Injection:
+            4.1 Creating services
+            4.2 Injecting services into components
+            4.3 Introduction to HTTP services and HttpClient
+5. Basic Observables:
+            5.1 Introduction to RxJS and observables
+            5.2 Making HTTP calls and handling async data
+6. Pipes:
+            6.1 Built-in pipes (e.g., Date, Currency)
+            6.2 Creating custom pipes
+
+**** 2. Advanced Level (4-6 weeks)
+Key Concepts:
+
+1. Advanced Component Interaction:
+            1.1 Input/Output properties
+            1.2 @ViewChild, @ContentChild
+            1.3 Component lifecycle hooks (ngOnInit, ngAfterViewInit, etc.)
+2. Advanced Routing:
+            2.1 Lazy loading modules
+            2.2 Route guards (CanActivate, CanDeactivate, etc.)
+3. Reactive Forms:
+            3.1 FormBuilder, FormGroup, FormControl
+            3.2 Validation (both template-driven and reactive)
+4. State Management:
+            4.1 Services for shared state
+            4.2 Introduction to NgRx (Redux pattern for Angular)
+5. Advanced HTTP & Observables:
+            5.1 Handling HTTP errors
+            5.2 Interceptors for HTTP requests
+            5.3 Combining observables, operators (e.g., map, filter, switchMap)
+6. Custom Directives & Pipes:
+            6.1 Creating custom attribute and structural directives
+7. Performance Optimization:
+            7.1 Lazy loading components
+            7.2 Change detection strategies (OnPush vs default)
+            7.3 Efficient template design
+8. Unit Testing:
+            8.1 Basics of Angular unit testing with Jasmine and Karma
+            8.2 Testing services and components
+
+**** 3. Pro Level (6-8 weeks)
+Key Concepts:
+
+1. NgRx State Management (Deep Dive):
+            1.1 Actions, reducers, effects, and selectors
+            1.2 Managing complex state
+2. Angular Universal:
+            2.1 Server-side rendering (SSR)
+            2.2 Configuring and optimizing Angular Universal apps
+3. Performance & Optimization (Deep Dive):
+            3.1 AOT vs JIT compilation
+            3.2 Tree shaking
+            3.3 Bundle size optimization
+            3.4 Lazy loading and preloading strategies
+4. Custom Angular Libraries:
+            4.1 Building and publishing Angular libraries
+5. Internationalization (i18n):
+            5.1 Setting up and managing multi-language support
+6. Animations:
+            6.1 Angular animation library
+            6.2 Using animations for advanced UI effects
+7. Progressive Web Apps (PWA):
+            7.1 Adding PWA features to an Angular app
+            7.2 Caching strategies, offline capabilities
+8. Advanced Testing & Debugging:
+            8.1 End-to-end (E2E) testing with Protractor or Cypress
+            8.2 Mocking HTTP requests
+            8.3 Debugging strategies for production apps
