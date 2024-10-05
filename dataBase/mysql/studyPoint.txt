@@ -14,43 +14,107 @@
         4.3 ORDER BY, LIMIT, and OFFSET.
 5. Basic Joins:
         5.1 INNER JOIN, LEFT JOIN.
-Functions:
-String functions (CONCAT, LENGTH).
-Numeric functions (SUM, AVG, MIN, MAX).
-Date functions (NOW, CURDATE).
-Advanced (4-5 weeks)
-Complex Queries:
-Advanced JOINs (RIGHT JOIN, FULL JOIN).
-Subqueries, CTE (Common Table Expressions).
-UNION, INTERSECT.
-Transactions and ACID Properties:
-BEGIN, COMMIT, ROLLBACK.
-Handling transactions in MySQL.
-Indexes and Performance Optimization:
-Indexes and types of indexes.
-Query performance optimization, EXPLAIN, and execution plans.
-Stored Procedures and Triggers:
-Creating and using stored procedures.
-Creating triggers for automation.
-Views:
-Creating and managing Views.
-Foreign Keys & Constraints:
-Managing data integrity.
-Pro Level (4-6 weeks)
-Database Administration:
-Users and Permissions management.
-Backups and recovery.
-Monitoring and troubleshooting MySQL performance.
-Replication, Failover, and Clustering.
-Advanced Optimization:
-Sharding, Partitioning, and Query Caching.
-Full-text search, and optimizing large-scale databases.
-Database Security:
-SSL connections, encryption, and security best practices.
-Role-based access control (RBAC).
-Handling Large Data Sets:
-Table Partitioning.
-Handling Big Data with MySQL.
-Replication and Backup Strategies:
-Master-Slave replication.
-Point-in-time recovery, automated backups.
+6. Functions:
+        6.1 String functions (CONCAT, LENGTH).
+        6.2 Numeric functions (SUM, AVG, MIN, MAX).
+        6.3 Date functions (NOW, CURDATE).
+**** 2. Advanced (4-5 weeks)
+1. Complex Queries:
+        1.1 Advanced JOINs (RIGHT JOIN, FULL JOIN).
+        1.2 Subqueries, CTE (Common Table Expressions).
+        1.3 UNION, INTERSECT.
+2. Transactions and ACID Properties:
+        2.1 BEGIN, COMMIT, ROLLBACK.
+        2.2 Handling transactions in MySQL.
+3. Indexes and Performance Optimization:
+        3.1 Indexes and types of indexes.
+        3.2 Query performance optimization, EXPLAIN, and execution plans.
+4. Stored Procedures and Triggers:
+        4.1 Creating and using stored procedures.
+        4.2 Creating triggers for automation.
+5. Views:
+        5.1 Creating and managing Views.
+6. Foreign Keys & Constraints:
+        6.1 Managing data integrity.
+
+**** 3. Pro Level (4-6 weeks)
+1. Database Administration:
+        1.1 Users and Permissions management.
+        1.2 Backups and recovery.
+        1.3 Monitoring and troubleshooting MySQL performance.
+        1.4 Replication, Failover, and Clustering.
+2. Advanced Optimization:
+        2.1 Sharding, Partitioning, and Query Caching.
+        2.2 Full-text search, and optimizing large-scale databases.
+3. Database Security:
+        3.1 SSL connections, encryption, and security best practices.
+        3.2 Role-based access control (RBAC).
+4. Handling Large Data Sets:
+        4.1 Table Partitioning.
+        4.2 Handling Big Data with MySQL.
+5. Replication and Backup Strategies:
+        5.1 Master-Slave replication.
+        5.2 Point-in-time recovery, automated backups.
+
+-------------------------------------------------------------------------------------------------------
+****** 2. Sequelize (Node.js ORM)
+
+**** 1. Basic (1-2 weeks)
+1. Introduction to Sequelize:
+        1.1 What is ORM? Why Sequelize?
+        1.2 Setting up Sequelize with Node.js.
+        1.3 Defining Models and Associations.
+        1.4 Simple Queries (findOne, findAll, create).
+
+**** 2.  Advanced (2-3 weeks)
+1. Associations:
+        1.1 One-to-One, One-to-Many, and Many-to-Many relationships.
+        1. 2 Eager Loading, Lazy Loading.
+2. Validations and Constraints:
+        2.1 Data validation with Sequelize.
+        2.2 Adding constraints and handling errors.
+3. Transactions:
+        3.1 Implementing transactions in Sequelize.
+        3.2 Using hooks (beforeCreate, afterUpdate).
+4. Advanced Querying:
+        4.1 Scopes, Aggregation, Raw Queries.
+
+**** 3. Pro Level (2-3 weeks)
+1. Sequelize CLI:
+        1.1 Database migrations and seeders.
+        1.2 Automating migrations and schema changes.
+2. Query Optimization:
+        2.1 Optimize complex queries.
+        2.2 Using indexes and optimizing performance.
+3. Custom Functions:
+        3.1 Writing custom methods and complex business logic within models.
+
+-------------------------------------------------------------------------------------
+
+****** 3. TypeORM (NestJS ORM)
+
+**** 1. Basic (1-2 weeks)
+1. Introduction to TypeORM:
+        1.1 What is ORM? Why TypeORM with NestJS?
+        1.2 Setting up TypeORM in NestJS.
+        1.3 Defining entities, columns, and simple relations.
+
+**** 2. Advanced (2-3 weeks)
+1. Associations:
+        1.1 One-to-One, One-to-Many, Many-to-Many relations.
+        1.2 Cascade and orphan removal.
+2. Advanced Querying:
+        2.1 Query Builder, complex where clauses, joins.
+3. Migrations and Transactions:
+        3.1 Handling migrations and schema changes.
+        3.2 Implementing transactions.
+**** 3. Pro Level (2-3 weeks)
+1. Performance Optimization:
+        1.1 Optimizing complex queries.
+        1.2 Lazy/Eager Loading and managing data fetching.
+2. Custom Repositories and Query Builders:
+        2.1 Extending repositories and adding custom logic.
+        2.2 Using advanced features like soft deletes, versioning, etc.
+3. Advanced Migrations:
+        3.1 Automating migrations and rollback strategies.
+
