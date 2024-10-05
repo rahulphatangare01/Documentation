@@ -1,0 +1,89 @@
+**** 1. Basic Level (2–3 weeks)
+At the basic level, you’ll focus on the core concepts and syntax that form the foundation of CSS.
+
+Topics to Cover:
+1. CSS Syntax & Selectors:
+            1.1 Basic selectors (element, class, id)
+            1.2 Grouping, universal, attribute selectors
+2. Color & Text:
+            2.1 Color values (hex, RGB, HSL)
+            2.2 Text properties (font-family, size, weight, style, alignment)
+3. Box Model:
+            3.1 Padding, margin, border, content
+4. Backgrounds & Borders:
+            4.1 Background colors, images, gradients
+            4.2 Border-radius, border styles
+5. Layouts Basics:
+            5.1 Block vs inline elements
+            5.2 Width, height, max-width, max-height
+            5.3 Float and clear
+            5.4 Positioning (static, relative, absolute, fixed)
+6. CSS Units:
+            6.1 Absolute vs relative units (px, em, rem, %, vw, vh)
+7. Lists, Links & Tables Styling:
+            7.1 Customizing list-style
+            7.2 Styling links with pseudo-classes (:hover, :visited, :active)
+            7.3 Basic table styling (borders, spacing)
+
+**** 2. Advanced Level (4–6 weeks)
+Here, you’ll start diving into more complex CSS features, understanding layouts, animations, and improving your ability to design responsive websites.
+
+Topics to Cover:
+1. Responsive Design:
+            1.1 Media queries (min-width, max-width)
+            1.2 Mobile-first approach
+            1.3 CSS Grid Layout
+            1.4 Flexbox (flex containers, flex items, alignment, wrapping)
+2. Typography:
+            2.1 Advanced text styling (line-height, letter-spacing)
+            2.2 Web fonts (Google Fonts, @font-face)
+3. Advanced Selectors & Pseudo-Classes:
+            3.1 Child combinators, sibling combinators
+            3.2 :nth-child(), :nth-of-type()
+            3.3 :before, :after
+4. Transitions & Animations:
+            4.1 CSS transitions (timing functions, delays)
+            4.2 CSS animations (keyframes, animation properties)
+5. CSS Variables (Custom Properties):
+            5.1 Defining and using variables in CSS
+6. Transformations:
+            6.1 CSS 2D/3D transforms (rotate, scale, translate)
+7. CSS Preprocessors (Sass/Less):
+            7.1 Variables, nesting, mixins, extends
+8. CSS Architecture:
+            8.1 BEM (Block Element Modifier) methodology
+            8.2 SMACSS (Scalable and Modular Architecture for CSS)
+
+**** 3. Pro Level (4–6 weeks)
+At the pro level, you’ll master the best practices, performance optimization, and complex CSS techniques used in production-ready applications.
+
+Topics to Cover:
+1. Advanced Layout Techniques:
+            1.1 Grid areas, naming grid lines
+            1.2 Complex layouts combining Grid & Flexbox
+2. CSS Performance Optimization:
+            2.1 Minifying CSS files
+            2.2 Critical CSS for above-the-fold content
+            2.3 Avoiding CSS bloat, unused CSS
+3. Cross-Browser Compatibility:
+            3.1 Vendor prefixes
+            3.2 Dealing with browser-specific quirks
+4. Accessibility & SEO:
+            4.1 Writing accessible CSS for screen readers
+            4.2 Focus states, contrast ratios
+            4.3 Semantic CSS for better SEO
+5. CSS Frameworks:
+            5.1 Bootstrap, Tailwind CSS (usage, customization)
+            5.2 Building your own mini-CSS framework
+6. CSS-in-JS:
+            6.1 Styled-components, Emotion (for React apps)
+7. Debugging CSS:
+            7.1 Using browser DevTools effectively
+            7.2 Identifying and fixing layout issues
+8. Complex Animations & Transitions:
+            8.1 Chaining animations, using JavaScript with CSS for complex effects
+            8.2 Animating SVG with CSS
+9. Writing Maintainable CSS:
+            9.1 Modular CSS techniques
+            9.2 Refactoring large CSS files
+            9.3 Component-based styling (Atomic CSS, OOCSS)
