@@ -1,0 +1,56 @@
+****** 1. MySQL
+**** 1. Basic (2-3 weeks)
+1. Introduction to Databases:
+        1.1. What is MySQL?
+        1.2. SQL basics: CRUD operations (Create, Read, Update, Delete).
+2. Data Types:
+        2.1 Numeric, String, Date, and Time data types.
+3. Database Design:
+        3.1 Tables, rows, and columns.
+        3.2 Primary Key, Foreign Key, and Constraints.
+4. Simple Queries:
+        4.1 SELECT statements.
+        4.2 WHERE clauses, and basic filtering.
+        4.3 ORDER BY, LIMIT, and OFFSET.
+5. Basic Joins:
+        5.1 INNER JOIN, LEFT JOIN.
+Functions:
+String functions (CONCAT, LENGTH).
+Numeric functions (SUM, AVG, MIN, MAX).
+Date functions (NOW, CURDATE).
+Advanced (4-5 weeks)
+Complex Queries:
+Advanced JOINs (RIGHT JOIN, FULL JOIN).
+Subqueries, CTE (Common Table Expressions).
+UNION, INTERSECT.
+Transactions and ACID Properties:
+BEGIN, COMMIT, ROLLBACK.
+Handling transactions in MySQL.
+Indexes and Performance Optimization:
+Indexes and types of indexes.
+Query performance optimization, EXPLAIN, and execution plans.
+Stored Procedures and Triggers:
+Creating and using stored procedures.
+Creating triggers for automation.
+Views:
+Creating and managing Views.
+Foreign Keys & Constraints:
+Managing data integrity.
+Pro Level (4-6 weeks)
+Database Administration:
+Users and Permissions management.
+Backups and recovery.
+Monitoring and troubleshooting MySQL performance.
+Replication, Failover, and Clustering.
+Advanced Optimization:
+Sharding, Partitioning, and Query Caching.
+Full-text search, and optimizing large-scale databases.
+Database Security:
+SSL connections, encryption, and security best practices.
+Role-based access control (RBAC).
+Handling Large Data Sets:
+Table Partitioning.
+Handling Big Data with MySQL.
+Replication and Backup Strategies:
+Master-Slave replication.
+Point-in-time recovery, automated backups.
