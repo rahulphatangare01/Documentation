@@ -1,0 +1,28 @@
+load testing
+database
+API testing
+UI testing
+functional testing
+
+Manual testing
+white box testing
+black box testing
+gray box testing
+
+functional testing
+unit testing
+intigration testing
+
+1. incremental testing
+2. non incremental testing
+   system testing
+
+non functional testing
+performance testing
+
+1.  load testing
+2.  stress testing
+3.  stability testing
+
+Useability testing
+compatability testing
