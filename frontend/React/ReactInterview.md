@@ -40,3 +40,13 @@ You can render React on the server side. This improves SEO and performance.
 It is easy to test.
 You can use React with any framework you wish as it is only a view layer.
 </details>
+
+<details>
+<summary>
+4.  <b>What are the differences between a class component and functional component? </b>
+</summary>
+The class component uses ES6 class syntax, and it extends React components with a render method that returns React elements.
+
+Functional components with hooks are purely JavaScript functions that also return React elements. Before the introduction of hooks, functional components were stateless.
+
+</details>
