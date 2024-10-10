@@ -50,3 +50,10 @@ The class component uses ES6 class syntax, and it extends React components with 
 Functional components with hooks are purely JavaScript functions that also return React elements. Before the introduction of hooks, functional components were stateless.
 
 </details>
+
+<details>
+<summary>
+5.  <b>What is Virtual DOM? </b>
+</summary>
+The Virtual DOM (VDOM) is an in-memory representation of Real DOM. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called reconciliation.
+</details>
