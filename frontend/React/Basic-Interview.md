@@ -1287,24 +1287,1132 @@ The `react` package contains `React.createElement()`, `React.Component`, `React.
 
 <details>
 <summary>
-51.  <b> </b>
+51.  <b>  What is the difference between a Presentational component and a Container component?</b>
+</summary>
+
+Presentational components are concerned with how things look. They generally receive data and callbacks exclusively via props. These components rarely have their own state, but when they do it generally concerns UI state, as opposed to data state.
+
+When your component just receives props and renders them to the page, this is a `stateless component`, for which a pure function can be used. These are also called dumb components or presentational components.
+
+Container components are more concerned with how things work. These components provide the data and behavior to presentational or other container components. They define actions and provide these as callbacks to the presentational components. They are also often stateful as they serve as data sources.
+
+</details>
+
+<details>
+<summary>
+52.  <b> What are the differences between a class component and functional component? </b>
+</summary>
+
+- The class component uses ES6 class syntax, and it extends React components with a render method that returns React elements.
+
+- Functional components with hooks are purely JavaScript functions that also return React elements. Before the introduction of hooks, functional components were stateless.
+
+</details>
+
+<details>
+<summary>
+53.  <b>What are the different lifecycle methods? </b>
+</summary>
+
+- `componentWillMount` (deprecated) - this is most commonly used for App configuration in your root component.
+- `componentDidMount` - here you want to do all the setup you couldn’t do without a DOM, and start getting all the data you need. Also if you want to set up eventListeners etc. this lifecycle hook is a good place to do that.
+- `componentWillReceiveProps` (deprecated) - this lifecyclye acts on particular prop changes to trigger state transitions.
+- `shouldComponentUpdate` - if you’re worried about wasted renders shouldComponentUpdate is a great place to improve performance as it allows you to prevent a rerender if component receives new prop. shouldComponentUpdate should always return a boolean and based on what this is will determine if the component is rerendered or not.
+- `componentWillUpdate` (deprecated) - rarely used. It can be used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate (but no access to previous props).
+- `componentDidUpdate` - also commonly used to update the DOM in response to prop or state changes.
+- `componentWillUnmount` - enables you can cancel any outgoing network requests, or remove all event listeners associated with the component.
+
+</details>
+
+<details>
+<summary>
+54.  <b>Explain React Hooks. </b>
+</summary>
+
+Hooks let you use more of React’s features without having to use classes. The first hook that you will most likely encounter is useState. useState is a Hook that lets you add React state to function components. It returns an array with a getter and a setter.
+
+The syntax looks like
+
+```jsx
+const [count, setCount] = React.useState(0);
+
+<button onClick={() => setCount(count + 1)}>Increase Count</button>;
+```
+
+The equivalent when using a class component would be.
+
+```jsx
+this.state = {
+  count: 0,
+};
+
+<button onClick={() => this.setState({ count: this.state.count + 1 })}>
+  Increase Count
+</button>;
+```
+
+The next hook you will most likely encounter is useEffect. The Effect Hook lets you perform side effects in function components. By passing an empty array as the second argument to useEffect is equivalent to using componentDidMount. If you pass a value to the array it will only call the useEffect function when the value in the array updates.
+
+```jsx
+useEffect(() => {
+  // do stuff when the component mounts
+}, []);
+```
+
+</details>
+
+<details>
+<summary>
+55.  <b>. Where in a React class component should you make an AJAX/API request? </b>
+</summary>
+
+`componentDidMount` is where an AJAX request should be made in a React component. This method will be executed when the component `mounts` (is added to the DOM) for the first time.
+This method is only executed once during the component’s life.
+
+Importantly, you can’t guarantee the AJAX request will have resolved before the component mounts. If it doesn't, that would mean that you’d be trying to setState on an unmounted component, which would not work. Making your AJAX request in `componentDidMount` will guarantee that there is a component to update.
+
+</details>
+
+<details>
+<summary>
+56.  <b> What are refs used for in React?</b>
+</summary>
+
+Refs are used to get reference to a DOM node or an instance of a component in React. Good examples of when to use refs are for managing focus/text selection, triggering imperative animations, or integrating with third-party DOM libraries. You should avoid using string refs and inline ref callbacks. Callback refs are advised by React.
+
+</details>
+
+<details>
+<summary>
+57.  <b> What advantages are there in using arrow functions?</b>
+</summary>
+
+- Scope safety: Until arrow functions, every new function defined its own this value (a new object in the case of a constructor, undefined in strict mode function calls, the base object if the function is called as an "object method", etc.). An arrow function does not create its own this, the this value of the enclosing execution context is used.
+- Compactness: Arrow functions are easier to read and write.
+- Clarity: When almost everything is an arrow function, any regular function immediately sticks out for defining the scope. A developer can always look up the next-higher function statement to see what the Object is.
+
+</details>
+
+<details>
+<summary>
+58.  <b> How would you prevent a class component from rendering? </b>
+</summary>
+
+Returning null from a component's render method means nothing will be displayed, but it does not affect the firing of the component's lifecycle methods.
+
+If the amount of times the component re-renders is an issue, there are two options available. Manually implementing a check in the `shouldComponentUpdate` lifecycle method hook.
+
+```jsx
+shouldComponentUpdate(nextProps, nextState){
+  const allowRender = true;
+  // Do some check here and assign decicison to allowRender
+  return allowRender
+}
+```
+
+Or using React.PureComponent instead of React.Component React.PureComponent implements shouldComponentUpdate() with a shallow prop and state comparison. This enables you to avoid re-rendering the component with the same props and state.
+
+</details>
+
+<details>
+<summary>
+59.  <b>When rendering a list what is a key and what is it's purpose? </b>
+</summary>
+
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys. When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort. It is not recommend to use indexes for keys if the items can reorder, as that would be slow.
+
+</details>
+
+<details>
+<summary>
+60.  <b>What is the purpose of `super(props)` ? </b>
+</summary>
+
+A child class constructor cannot make use of this until `super()` has been called. Also, ES2015 class constructors have to call `super()` if they are subclasses. The reason for passing props to `super()` is to enable you to access `this.props` in the constructor.
+
+</details>
+
+<details>
+<summary>
+61.  <b>What is equivalent of the following using React.createElement? </b>
+</summary>
+
+```jsx
+const element = <h1 className="greeting">Hello, world!</h1>;
+```
+
+```jsx
+const element = React.createElement(
+  "h1",
+  { className: "greeting" },
+  "Hello, world!"
+);
+```
+
+</details>
+
+<details>
+<summary>
+62.  <b> Write a custom hook which can be used to debounce user's input. </b>
+</summary>
+
+**Custom Hook**
+
+```jsx harmony
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [value]);
+
+  return debouncedValue;
+};
+```
+
+**Example hook**
+
+```jsx harmony
+const Counter = () => {
+  const [value, setValue] = useState(0);
+  const lastValue = useDebounce(value, 1000);
+
+  return (
+    <div>
+      <p>
+        Current Value: {value} | Debounced Value: {lastValue}
+      </p>
+      <button onClick={() => setValue(value + 1)}>Increment</button>
+    </div>
+  );
+};
+```
+
+</details>
+
+<details>
+<summary>
+63.  <b> Write a custom hook to copy text to clipboard. </b>
+</summary>
+
+**Create Hook**
+
+```jsx harmony
+function useCopyToClipboard(content) {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const copy = useCallback(() => {
+    navigator.clipboard
+      .writeText(content)
+      .then(() => setIsCopied(true))
+      .then(() => setTimeout(() => setIsCopied(false), 1250))
+      .catch((err) => alert(err));
+  }, [content]);
+  return [isCopied, copy];
+}
+```
+
+**Use of the hook**
+
+```jsx harmony
+export default function App() {
+  const [isCopied, copy] = useCopyToClipboard("Text to copy!");
+  return <button onClick={copy}>{isCopied ? "Copied!" : "Copy"}</button>;
+}
+```
+
+</details>
+
+<details>
+<summary>
+64.  <b> How to Use the 'useId' Hook to generate unique ids.</b>
+</summary>
+
+- useId does not take any parameters.
+
+- useId returns a unique ID string associated with this particular useId call in this particular component.
+
+**Right Approch**
+
+```jsx harmony
+import { useId } from "react";
+
+const App = () => {
+  const id = useId();
+
+  return (
+    <form>
+      <label htmlFor={`email-${id}`}>Email</label>
+      <input type="text" id={`email-${id}`} name="email" />
+
+      <label htmlFor={`password-${id}`}>Password</label>
+      <input type="password" id={`password-${id}`} name="password" />
+    </form>
+  );
+};
+```
+
+**🔴 Bad Practise - Don't use for key**
+
+```jsx harmony
+const id = useId();
+
+return posts.map((post) => <article key={id}>...</article>);
+```
+
+</details>
+
+<details>
+<summary>
+65.  <b> How to validate Props in React?</b>
+</summary>
+
+- We can use 'prop-types' package
+
+- Earlier, till React v15.5 this was there as part of React iteslf
+
+```jsx harmony
+import PropTypes from "prop-types";
+
+function MyComponent({ name }) {
+  return <div>Hello, {name}</div>;
+}
+
+MyComponent.propTypes = {
+  name: PropTypes.string,
+};
+
+export default MyComponent;
+```
+
+</details>
+
+<details>
+<summary>
+66.  <b>Give a practical example of Higher Order Component in react. </b>
+</summary>
+
+- Show a loader while a component waits for data
+
+**HOC**
+
+```jsx harmony
+function WithLoading(Component) {
+  return function WihLoadingComponent({ isLoading, ...props }) {
+    if (!isLoading) return <Component {...props} />;
+    return <p>Please wait, fetching your data in no time...</p>;
+  };
+}
+export default WithLoading;
+```
+
+**Use of HOC**
+
+```jsx harmony
+import UserListComponent from "./UserListComponent.js"; //importing component
+import WithLoading from "./withLoading.js"; //importing HOC
+const ListWithLoading = WithLoading(UserListComponent); //connect component with HOC
+
+const App = () => {
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    //fetch data
+    const dataFromApi = ["this is coming from API call", "don't show loader"];
+    //at this time loader will be shown in the UI using HOC
+    //data fetched successfully
+    setUsers([...dataFromApi]);
+    setLoading(false);
+  }, []);
+
+  return <ListWithLoading isLoading={loading} users={users} />;
+};
+```
+
+</details>
+
+<details>
+<summary>
+67.  <b>Why React's useDeferredValue hook is useful? </b>
+</summary>
+
+- `useDeferredValue` is a React Hook that lets you defer updating a part of the UI.
+
+- Basically it let you perform the debouncing technique with lesser code.
+
+**Use**
+
+```jsx harmony
+import { useState, useDeferredValue } from "react";
+//userList component takes searchText to fetch user's list
+import UserList from "./UserList.js";
+
+export default function App() {
+  const [searchText, setSearchText] = useState("");
+  //pass searchText as default visible value in useDeferredValue
+  const deferredQuery = useDeferredValue(searchText);
+
+  return (
+    <>
+      <label>
+        Search user:
+        <input
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </label>
+      <div>
+        <UserList searchText={deferredQuery} />
+      </div>
+    </>
+  );
+}
+```
+
+</details>
+
+<details>
+<summary>
+68.  <b>How to detect 'click' outside React component? </b>
+</summary>
+
+```jsx harmony
+export default function OutsideAlerter() {
+  const clickMeDivRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!ref?.current?.contains(event.target)) {
+        alert("You clicked outside of me!");
+      }
+    };
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [clickMeDivRef]);
+
+  return <div ref={clickMeDivRef}>Clicked me?</div>;
+}
+```
+
+</details>
+
+<details>
+<summary>
+69.  <b>Why do React component names have to start with capital letters? </b>
+</summary>
+
+- `<person />` compiles to React.createElement('person') (html tag)
+- `<Person />` compiles to React.createElement(Person)
+- `<obj.person />` compiles to React.createElement(obj.person)
+
+```jsx harmony
+// Wrong! This is a component and should be in uppercase.
+function person(props) {
+  // Correct! This usage of <div> is correct because div is a valid element.
+  return <div>{props.isLearning ? "Great!" : "Call Mom!"}</div>;
+}
+
+function App() {
+  // Wrong! React thinks <person /> is a HTML tag because it's not capitalized.
+  return <person isLearning={true} />;
+}
+
+// Correct! This is a component and should be capitalized
+function Person(props) {
+  // Correct! This usage of <div> is correct because div is a valid element.
+  return <div>{props.isLearning ? "Great!" : "Call Mom!"}</div>;
+}
+
+function App() {
+  // Correct! React knows <Person /> is a component because it's capitalized.
+  return <Person isLearning={true} />;
+}
+```
+
+</details>
+
+<details>
+<summary>
+70.  <b> What is the difference between npx and npm? </b>
+</summary>
+
+- NPM is a package manager and can be used to install node.js packages.
+- NPX is a tool to execute node.js packages.
+
+It doesn't matter whether you installed that package globally or locally.
+NPX will temporarily install it and run it. NPM also can run packages if you configure a package.json file.
+
+So if you want to check/run a node package quickly without installing it - use NPX.
+
+`create-react-app` is a npm package that is expected to be run only once in a project's lifecycle.
+Hence, it is preferred to use npx to install and run it in a single step.
+
+```jsx harmony
+> npx create-react-app codinn
+```
+
+```jsx harmony
+npM - Manager;
+```
+
+```jsx harmony
+npX - Execute;
+```
+
+</details>
+
+<details>
+<summary>
+71.  <b>How to set focus on an input field after component mounts on UI? </b>
+</summary>
+
+```jsx
+import React, { useEffect, useRef } from "react";
+
+const SearchPage = () => {
+  const textInput = useRef(null);
+
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
+  return (
+    <div>
+      <input ref={textInput} type="text" />
+    </div>
+  );
+};
+```
+
+</details>
+
+<details>
+<summary>
+72.  <b>  How to programmatically navigate using latest React Router version? </b>
+</summary>
+
+**Approch 1**
+
+```jsx harmony
+import { useNavigate } from "react-router-dom";
+
+function SignupForm() {
+  let navigate = useNavigate();
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await submitForm(event.target);
+    navigate("../success", { replace: true });
+  }
+
+  return <form onSubmit={handleSubmit}>{/* ... */}</form>;
+}
+```
+
+**Approch 2**
+
+```jsx harmony
+import { redirect } from "react-router-dom";
+
+const loader = async () => {
+  const user = await getUser();
+  if (!user) {
+    return redirect("/login");
+  }
+};
+```
+
+</details>
+
+<details>
+<summary>
+73.  <b>What is React state batching? Guess the output. </b>
+</summary>
+
+**Given Snippet**
+
+```jsx harmony
+export default function Counter() {
+  const [number, setNumber] = useState(0);
+
+  return (
+    <>
+      <h1>{number}</h1>
+      <button
+        onClick={() => {
+          setNumber(number + 1);
+          setNumber(number + 1);
+          setNumber(number + 1);
+        }}
+      >
+        +3
+      </button>
+    </>
+  );
+}
+```
+
+**Output**
+
+- on click of '+3' -> prints '1'
+- or update state only once because of state batching concept
+
+**Why?**
+
+- This lets you update multiple state variables without triggering too many re-renders.
+- But if you want to update anyways? That is - it need to print 3 on click of '+3'.
+- Pass the callback method to `setNumber`.
+
+```jsx harmony
+setNumber((n) => n + 1);
+```
+
+```jsx harmony
+return (
+  <>
+    <h1>{number}</h1>
+    <button
+      onClick={() => {
+        setNumber((n) => n + 1);
+        setNumber((n) => n + 1);
+        setNumber((n) => n + 1);
+      }}
+    >
+      +3
+    </button>
+  </>
+);
+```
+
+</details>
+
+<details>
+<summary>
+74.  <b>How to pass data between sibling components using React router? </b>
+</summary>
+
+- Passing data between sibling components of React is possible using React Router `useParams` hook.
+- Parent component (usually App.js to define routes)
+
+```jsx harmony
+<Route path="/user/:id" element={<User />} />
+```
+
+```jsx harmony
+import { useParams } from "react-router-dom";
+
+const User = () => {
+  let { id } = useParams();
+
+  useEffect(() => {
+    console.log(`/user/${id}`);
+  }, []);
+
+  // .....
+};
+```
+
+</details>
+
+<details>
+<summary>
+75.  <b> How to access a global variable using useContext hook?</b>
+</summary>
+
+**1. create context**
+
+```jsx harmony
+const GlobalLanguageContext = React.createContext(null);
+```
+
+**2. connect with all the child components under Provider**
+
+```jsx harmony
+const App = () => {
+  const contextValue = { language: "EN" };
+
+  return (
+    //One time Config - Here in Provider's value prop you can pass
+    //the value of your context global variable
+    <GlobalLanguageContext.Provider value={contextValue}>
+      <Child />
+    </GlobalLanguageContext.Provider>
+  );
+};
+```
+
+**3. use variable**
+
+```jsx harmony
+const Child = () => {
+  const { language } = React.useContext(GlobalLanguageContext);
+  return <div>Application Language: {language}</div>;
+};
+```
+
+</details>
+
+<details>
+<summary>
+76.  <b> What is the difference between useMemo and useCallback? </b>
+</summary>
+
+- useCallback gives you referential equality between renders for functions. And useMemo gives you referential equality between renders for values.
+- useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
+- useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result
+</details>
+
+<details>
+<summary>
+77.  <b>Why you should prefer vite over create-react-app? </b>
+</summary>
+
+- Create React App (CRA) has long been the go-to tool for most developers to scaffold React projects and set up a dev server. It offers a modern build setup with no configuration.
+- But, we see increased development and build time when the project size increases. This slow feedback loop affects developer's productivity and happiness.
+- To address these issues, there is a new front-end tooling in the ecosystem: `Vite`.
+- Unlike CRA, Vite does not build your entire application before serving, instead, it builds the application on demand. It also leverages the power of native ES modules, esbuild, and Rollup to improve development and build time.
+- Vite is a next-generation, front-end tool that focuses on speed and performance.
+- Vite is a development server that provides rich feature enhancements over native ES modules: fast Hot Module Replacement (HMR), pre-bundling, support for typescript, jsx, and dynamic import.
+- A build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
+
+</details>
+
+<details>
+<summary>
+78.  <b> What are the advantages of react-router? </b>
+</summary>
+
+- The major advantage of `react-router` is that the page does not have to be refreshed when a link to another page is clicked.
+- It also allows us to use browser's `history` feature while preserving the right application view.
+- Better user experience, animations and transitions can be easily implemented when switching between different components.
+- React Router uses `dynamic routing` to ensure that routing is achieved as it is requested by the user. This also means that all the required components are also rendered without any flashes of white screen or page reload.
+- The main components of `react-router` are: `BrowserRouter`, `Routes`, `Route`, `Link`.
+
+</details>
+
+<details>
+<summary>
+79.  <b> How can you optimize performance in a ReactJS application? </b>
+</summary>
+
+- One way is to use the shouldComponentUpdate lifecycle method to prevent unnecessary re-renders of a component.
+- Another way is to use the PureComponent class, which implements shouldComponentUpdate with a shallow comparison of props and state.
+- Additionally, using the React.memo higher-order component can optimize the performance of functional components.
+
+</details>
+
+<details>
+<summary>
+80.  <b>Write code for CRUD functionality in ReactJs? </b>
+</summary>
+
+- To implement CRUD (create, read, update, delete) functionality in a React application using hooks, you can use the useState hook to manage the state of your application and the useEffect hook to handle side effects, such as making API calls to a server to create, read, update, or delete data.
+
+- Here is an example of how you might implement CRUD functionality in a React component using hooks:
+
+```jsx harmony
+import React, { useState, useEffect } from "react";
+
+function App() {
+  // useState hook to manage the state of our items
+  const [items, setItems] = useState([]);
+
+  // useEffect hook to fetch the items from an API
+  useEffect(() => {
+    fetch("https://my-api.com/items")
+      .then((response) => response.json())
+      .then((data) => setItems(data));
+  }, []);
+
+  // helper function to add a new item
+  const addItem = (name) => {
+    const newItem = { name };
+    setItems([...items, newItem]);
+  };
+
+  // helper function to update an item
+  const updateItem = (index, name) => {
+    const updatedItems = [...items];
+    updatedItems[index] = { name };
+    setItems(updatedItems);
+  };
+
+  // helper function to delete an item
+  const deleteItem = (index) => {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    setItems(updatedItems);
+  };
+
+  // render the items in a list
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>
+          {item.name}
+          <button onClick={() => updateItem(index, "updated name")}>
+            Update
+          </button>
+          <button onClick={() => deleteItem(index)}>Delete</button>
+        </li>
+      ))}
+      <button onClick={() => addItem("new item")}>Add item</button>
+    </ul>
+  );
+}
+```
+
+</details>
+
+<details>
+<summary>
+81.  <b>What is a hook in React and why are they useful?  </b>
+</summary>
+
+A hook in React is a function that allows developers to use state and other React features without writing a class.
+This makes it possible to use these features in functional components, which can be easier to write and understand than class-based components.
+
+</details>
+
+<details>
+<summary>
+82.  <b> What are some common hooks that are used in React?</b>
+</summary>
+
+Some common hooks that are used in React include
+
+1. useState,
+2. useEffect,
+3. useContext.
+
+The useState hook allows a functional component to have local state, the useEffect hook allows a functional component to perform side effects, and the useContext hook allows a functional component to access values from the nearest context provider.
+
+</details>
+
+<details>
+<summary>
+83.  <b>  Can you use hooks inside a class-based component?</b>
+</summary>
+
+No, hooks can only be used inside functional components.
+If you need to use state or other React features in a class-based component, you will need to use a class component.
+
+</details>
+
+<details>
+<summary>
+84.  <b> How do you test a component that uses hooks? </b>
+</summary>
+
+You can test a component that uses hooks by using the act utility from the react-testing-library package. This utility allows you to simulate the effects of React's reconciliation process, which is necessary for hooks to work correctly. You can then use standard Jest or Enzyme assertions to verify the behavior of your component.
+
+</details>
+
+<details>
+<summary>
+85.  <b>What is the useEffect hook used for? </b>
+</summary>
+
+The `useEffect` hook is used for performing side effects in functional components. This can include things like data fetching, setting up subscriptions, or manually changing the DOM. The `useEffect` hook is called after the component renders, and can be used to ensure that your component stays up-to-date with any relevant data or dependencies.
+
+</details>
+
+<details>
+<summary>
+86.  <b>Create a simple custom hook in React? </b>
+</summary>
+
+- To create a custom hook in React, you can use the useState hook to add local state to a functional component. Here's an example:
+
+```jsx harmony
+import { useState } from "react";
+
+function useCounter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+  }
+
+  return { count, increment };
+}
+```
+
+- This hook adds a count state and an increment function to a component. To use this hook in a component, you can call it at the top of the component function, like this:
+
+```jsx harmony
+function MyComponent() {
+  const { count, increment } = useCounter();
+
+  return (
+    <div>
+      <p>The count is {count}.</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
+
+- Now, whenever the increment button is clicked, the count state will be updated and the component will re-render with the new value.
+
+</details>
+
+<details>
+<summary>
+87.  <b> What is the difference between useEffect and useLayoutEffect? </b>
+</summary>
+
+- Here is an example of how you might use useEffect and useLayoutEffect in a React component:
+
+```jsx harmony
+import React, { useState, useEffect, useLayoutEffect } from "react";
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  // useEffect runs after the render cycle has completed
+  useEffect(() => {
+    // This code will run every time the component renders,
+    // after the render is complete.
+    console.log("useEffect running");
+  });
+
+  // useLayoutEffect runs synchronously immediately after the render cycle
+  useLayoutEffect(() => {
+    // This code will run every time the component renders,
+    // before the browser has a chance to paint the update to the screen.
+    // Be careful! This can cause visual inconsistencies.
+    console.log("useLayoutEffect running");
+  });
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+- In this example, when the Increment button is clicked, the useEffect hook will run after the component has been updated and re-rendered, whereas the useLayoutEffect hook will run before the update is painted to the screen. This means that if you were to use useLayoutEffect to update the UI, the user might see the UI update before the update is complete, which can cause visual inconsistencies. useEffect, on the other hand, runs after the update is complete and is therefore safer to use for updating the UI.
+
+</details>
+
+<details>
+<summary>
+88.  <b>  Why virtual DOM is faster to update than real DOM? </b>
+</summary>
+
+- The virtual DOM is faster to update than the real DOM because React uses a clever technique to minimize the number of updates that need to be made to the real DOM.
+
+- When you update the virtual DOM, React will compare the new virtual DOM with the old one, determine which parts have changed, and then update the real DOM accordingly. This means that only the parts of the DOM that actually need to be changed are updated, which is much faster than updating the entire DOM every time there is a change.
+
+- Furthermore, the virtual DOM is implemented in JavaScript, which is generally faster to execute than the native code that is used to manipulate the real DOM.
+
+- This means that React can perform updates to the virtual DOM quickly, and then use the resulting diff to make efficient updates to the real DOM.
+
+Overall, the use of the virtual DOM allows React to make efficient updates to the UI, which results in a faster and more responsive user experience.
+
+</details>
+
+<details>
+<summary>
+89.  <b>  Can you explain the difference between a pure and impure function, and why it matters in the context of React? </b>
+</summary>
+
+- In React, a pure function is a function that returns the same output for the same set of inputs, regardless of when it is called. An impure function, on the other hand, is a function that may produce different outputs for the same set of inputs, depending on when it is called or other factors.
+
+**pure function in React**
+
+```jsx harmony
+function addNumbers(a, b) {
+  return a + b;
+}
+```
+
+- This function takes in two numbers, a and b, and returns their sum. This function will always return the same result for the same input, regardless of when it is called or what state the component is in.
+
+**impure function in React:**
+
+```jsx harmony
+function getRandomNumber() {
+  return Math.random();
+}
+```
+
+- This function returns a random number every time it is called. Because the output of this function depends on factors outside of its control (in this case, the current time and a random seed), it is considered an impure function.
+
+- In general, pure functions are preferred in React because they are easier to reason about and test. Impure functions, on the other hand, can introduce unpredictable behavior and make your code more difficult to understand.
+
+</details>
+
+<details>
+<summary>
+90.  <b>Styled-Components vs Inline Styling in React? </b>
+</summary>
+
+- It really depends on your specific needs and preferences. Both inline styling and Styled Components have their own advantages and disadvantages, and the best choice for you will depend on the requirements of your project.
+
+- Inline styling refers to the practice of applying styles directly to elements using the style attribute. In React, this can be done using the style prop on elements. For example:
+
+```jsx harmony
+function MyComponent() {
+  return <div style={{ color: "red", fontSize: "20px" }}>Hello, World!</div>;
+}
+```
+
+- One advantage of inline styling is that it can be very simple to use and understand. There's no need to import additional libraries or set up complex configurations. Inline styling also allows you to easily apply styles based on props or state, which can be very useful in certain situations.
+
+- However, inline styling can also have some drawbacks. It can make your code more cluttered and harder to read, especially for complex styles. It can also be more difficult to reuse styles across different components, as you would need to copy and paste the style objects between components.
+
+- Styled Components is a library that allows you to define styles using actual CSS syntax and apply them to React components. It allows you to write your styles in a declarative way alongside your components, rather than having to maintain separate style sheets. Here's an example of using Styled Components in a React component:
+
+```jsx harmony
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: palevioletred;
+  border-radius: 3px;
+  border: none;
+  color: white;
+`;
+
+function MyComponent() {
+  return <Button>Click me!</Button>;
+}
+```
+
+- One advantage of Styled Components is that it helps to keep your styles organized and modular. Instead of having a separate CSS file for each component, you can define the styles directly within the component itself. This can make it easier to understand and maintain your code, as everything related to the component is kept in one place.
+
+- Styled Components also allows you to easily customize your styles based on props passed to the component, and to define complex styles using standard CSS syntax.
+
+- However, Styled Components does require an additional library to be installed and imported, which can add some complexity to your project. It may also have a slightly higher learning curve for developers who are not familiar with CSS-in-JS libraries.
+
+- Ultimately, the choice between inline styling and Styled Components will depend on your specific needs and preferences. If you're looking for a quick and easy way to apply simple styles, inline styling may be the way to go. If you want more control and flexibility over your styles, and are willing to invest some time in learning a new library, Styled Components may be a better choice.
+
+</details>
+
+<details>
+<summary>
+91.  <b> How to loop inside JSX?</b>
+</summary>
+
+You can simply use `Array.prototype.map` with ES6 _arrow function_ syntax.
+
+For example, the `items` array of objects is mapped into an array of components:
+
+```jsx harmony
+<tbody>
+  {items.map((item) => (
+    <SomeComponent key={item.id} name={item.name} />
+  ))}
+</tbody>
+```
+
+But you can't iterate using `for` loop:
+
+```jsx harmony
+    <tbody>
+      for (let i = 0; i < items.length; i++) {
+        <SomeComponent key={items[i].id} name={items[i].name} />
+      }
+    </tbody>
+```
+
+This is because JSX tags are transpiled into _function calls_, and you can't use statements inside expressions. This may change thanks to `do` expressions which are _stage 1 proposal_.
+
+</details>
+
+<details>
+<summary>
+92.  <b> How to add Google Analytics for React Router? </b>
+</summary>
+
+Add a listener on the `history` object to record each page view:
+
+```jsx harmony
+history.listen(function (location) {
+  window.ga("set", "page", location.pathname + location.search);
+  window.ga("send", "pageview", location.pathname + location.search);
+});
+```
+
+</details>
+
+<details>
+<summary>
+93.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-52.  <b> </b>
+94.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-53.  <b> </b>
+95.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-54.  <b> </b>
+96.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+97.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+98.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+99.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+100.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+101.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+102.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+103.  <b> </b>
 </summary>
 </details>
