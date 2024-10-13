@@ -347,4 +347,6 @@ Once you’ve made changes to your forked repository, you can submit a pull requ
 
 ## Branch Management: Merging branches (git merge), resolving conflicts
 
+
+**pull request  merge**
 Merging is the process of combining the work done in different branches into a single branch. Typically, a feature or bug fix is developed in a separate branch, and once it's completed, that branch is merged back into the main development branch
