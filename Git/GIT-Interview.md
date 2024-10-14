@@ -94,3 +94,13 @@ Preference depends on team size, project complexity, and release cycles.
 #### 20. How do you resolve a detached HEAD state in Git, and what causes it?
 
 A detached HEAD occurs when you check out a commit instead of a branch. You can fix it by creating a new branch with `git checkout -b <new-branch-name>` and continuing work. Otherwise, switching back to a branch will resolve the state.
+
+---
+
+---
+
+---
+
+---
+
+---
