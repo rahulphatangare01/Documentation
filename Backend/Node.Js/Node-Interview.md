@@ -714,212 +714,461 @@ log.trace(`print ${do2Result}`);
 
 <details>
 <summary>
-18.  <b> </b>
+18.  <b> What is an error-first callback? </b>
 </summary>
+
+`Error-first callbacks` are used to pass errors and data. The first argument is always an error object that the programmer has to check if something went wrong. Additional arguments are used to pass data.
+
+```jsx harmony
+fs.readFile(filePath, function (err, data) {
+  if (err) {
+    //handle the error
+  }
+  // use the data object
+});
+```
+
 </details>
 
 <details>
 <summary>
-19.  <b> </b>
+19.  <b>  What's the difference between operational and programmer errors? </b>
 </summary>
+
+Operation errors are not bugs, but problems with the system, like request timeout or hardware failure. On the other hand programmer errors are actual bugs.
+
 </details>
 
 <details>
 <summary>
-20.  <b> </b>
+20.  <b> What is the difference between Nodejs, AJAX, and jQuery?</b>
 </summary>
+
+The one common trait between Node.js, AJAX, and jQuery is that all of them are the advanced implementation of JavaScript.
+However, they serve completely different purposes.
+
+- Node.js –It is a server-side platform for developing client-server applications. For example, if we’ve to build an online employee management system, then we won’t do it using client-side JS. But the Node.js can certainly do it as it runs on a server similar to Apache, Django not in a browser.
+
+- AJAX (aka Asynchronous Javascript and XML) –It is a client-side scripting technique, primarily designed for rendering the contents of a page without refreshing it. There are a no. of large companies utilizing AJAX such as Facebook and Stack Overflow to display dynamic content.
+
+- jQuery –It is a famous JavaScript module which complements AJAX, DOM traversal, looping and so on. This library provides many useful functions to help in JavaScript development. However, it’s not mandatory to use it but as it also manages cross-browser compatibility, so can help you produce highly maintainable web applications.
 </details>
 
 <details>
 <summary>
-21.  <b> </b>
+21.  <b> How to make Post request in Node.js? </b>
 </summary>
+
+```jsx harmony
+var request = require("request");
+request.post(
+  "http://localhost:8000/add/action",
+  {
+    form: {
+      key: "value",
+    },
+  },
+  function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+    }
+  }
+);
+```
+
 </details>
 
 <details>
 <summary>
-22.  <b> </b>
+22.  <b> What are the key features of Node.js?  </b>
 </summary>
+
+1. **Asynchronous event driven IO helps concurrent request handling** – All APIs of Node.js are asynchronous. This feature means that if a Node receives a request for some Input/Output operation, it will execute that operation in the background and continue with the processing of other requests. Thus it will not wait for the response from the previous requests.
+2. **Fast in Code execution** – Node.js uses the V8 JavaScript Runtime engine, the one which is used by Google Chrome. Node has a wrapper over the JavaScript engine which makes the runtime engine much faster and hence processing of requests within Node.js also become faster.
+3. **Single Threaded but Highly Scalable** – Node.js uses a single thread model for event looping. The response from these events may or may not reach the server immediately. However, this does not block other operations. Thus making Node.js highly scalable. Traditional servers create limited threads to handle requests while Node.js creates a single thread that provides service to much larger numbers of such requests.
+4. **Node.js library uses JavaScript** – This is another important aspect of Node.js from the developer’s point of view. The majority of developers are already well-versed in JavaScript. Hence, development in Node.js becomes easier for a developer who knows JavaScript.
+5. **There is an Active and vibrant community for the Node.js framework** – The active community always keeps the framework updated with the latest trends in the web development.
+6. **No Buffering** – Node.js applications never buffer any data. They simply output the data in chunks.
 </details>
 
 <details>
 <summary>
-23.  <b> </b>
+23.  <b>What is control flow function? </b>
 </summary>
+
+It is a generic piece of code which runs in between several asynchronous function calls is known as control flow function.
+
 </details>
 
 <details>
 <summary>
-24.  <b> </b>
+24.  <b>What are Event Listeners? </b>
 </summary>
+
+`Event Listeners` are similar to call back functions but are associated with some event. For example when a server listens to http request on a given port a event will be generated and to specify http server has received and will invoke corresponding event listener. Basically, Event listener's are also call backs for a corresponding event.
+
+Node.js has built in event's and built in event listeners. Node.js also provides functionality to create Custom events and Custom Event listeners.
+
 </details>
 
 <details>
 <summary>
-25.  <b> </b>
+25.  <b>  If Node.js is single threaded then how it handles concurrency?</b>
 </summary>
+
+Node provides a single thread to programmers so that code can be written easily and without bottleneck. Node internally uses multiple POSIX threads for various I/O operations such as File, DNS, Network calls etc.
+
+When Node gets I/O request it creates or uses a thread to perform that I/O operation and once the operation is done, it pushes the result to the event queue. On each such event, event loop runs and checks the queue and if the execution stack of Node is empty then it adds the queue result to execution stack.
+
+This is how Node manages concurrency.
+
 </details>
 
 <details>
 <summary>
-26.  <b> </b>
+26.  <b> What is Callback Hell? </b>
 </summary>
+
+The asynchronous function requires callbacks as a return parameter. When multiple asynchronous functions are chained together then callback hell situation comes up.
+
 </details>
 
 <details>
 <summary>
-27.  <b> </b>
+27.  <b> Could we run an external process with Node.js? </b>
 </summary>
+
+Yes. Child process module enables us to access operating system functionaries or other apps. Scalability is baked into Node and child processes are the key factors to scale our application. You can use child process to run system commands, read large files without blocking event loop, decompose the application into various “nodes” (That’s why it’s called Node).
+
+Child process module has following three major ways to create child processes –
+
+1. spawn - child_process.spawn launches a new process with a given command.
+2. exec - child_process.exec method runs a command in a shell/console and buffers the output.
+3. fork - The child_process.fork method is a special case of the spawn() to create child processes.
 </details>
 
 <details>
 <summary>
-28.  <b> </b>
+28.  <b> List out the differences between AngularJS and NodeJS? </b>
 </summary>
+
+AngularJS is a web application development framework. It’s a JavaScript and it is different from other web app frameworks written in JavaScript like jQuery. NodeJS is a runtime environment used for building server-side applications while AngularJS is a JavaScript framework mainly useful in building/developing client-side part of applications which run inside a web browser.
+
 </details>
 
 <details>
 <summary>
-29.  <b> </b>
+29.  <b>How you can monitor a file for modifications in Node.js </b>
 </summary>
+
+We can take advantage of File System watch() function which watches the changes of the file.
+
 </details>
 
 <details>
 <summary>
-30.  <b> </b>
+30.  <b> What are the core modules of Node,js? </b>
 </summary>
+
+1. EventEmitter
+2. Stream
+3. FS
+4. Net
+5. Global Objects
+
 </details>
 
 <details>
 <summary>
-31.  <b> </b>
+31.  <b> What is REPL in context of Node? </b>
 </summary>
+
+`REPL` stands for Read Eval Print Loop and it represents a computer environment like a window console or unix/linux shell where a command is entered and system responds with an output. Node.js or Node comes bundled with a REPL environment. It performs the following desired tasks.
+
+- Read - Reads user's input, parse the input into JavaScript data-structure and stores in memory.
+- Eval - Takes and evaluates the data structure
+- Print - Prints the result
+- Loop - Loops the above command until user press ctrl-c twice.
 </details>
 
 <details>
 <summary>
-32.  <b> </b>
+32.  <b> What is Callback? </b>
 </summary>
+
+`Callback` is an asynchronous equivalent for a function. A callback function is called at the completion of a given task. Node makes heavy use of callbacks. All APIs of Node are written is such a way that they supports callbacks.
+
+For example, a function to read a file may start reading file and return the control to execution environment immediately so that next instruction can be executed. Once file I/O is complete, it will call the callback function while passing the callback function, the content of the file as parameter. So there is no blocking or wait for File I/O.
+
+This makes Node.js highly scalable, as it can process high number of request without waiting for any function to return result.
+
 </details>
 
 <details>
 <summary>
-33.  <b> </b>
+33.  <b> What is a blocking code? </b>
 </summary>
+
+If application has to wait for some I/O operation in order to complete its execution any further then the code responsible for waiting is known as blocking code.
+
 </details>
 
 <details>
 <summary>
-34.  <b> </b>
+34.  <b>  How Node prevents blocking code? </b>
 </summary>
+
+By providing callback function. Callback function gets called whenever corresponding event triggered.
+
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+35.  <b>  What is Event Loop?</b>
 </summary>
+
+Node.js is a single threaded application but it support concurrency via concept of event and callbacks. As every API of Node js are asynchronous and being a single thread, it uses async function calls to maintain the concurrency. Node uses observer pattern. Node thread keeps an event loop and whenever any task get completed, it fires the corresponding event which signals the event listener function to get executed.
+
 </details>
 
 <details>
 <summary>
-36.  <b> </b>
+36.  <b> What is Event Emmitter?</b>
 </summary>
+
+All objects that emit events are members of EventEmitter class. These objects expose an eventEmitter.on() function that allows one or more functions to be attached to named events emitted by the object.
+
+When the EventEmitter object emits an event, all of the functions attached to that specific event are called synchronously.
+
+```jsx harmony
+const EventEmitter = require("events");
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+myEmitter.on("event", () => {
+  console.log("an event occurred!");
+});
+myEmitter.emit("event");
+```
+
 </details>
 
 <details>
 <summary>
-37.  <b> </b>
+37.  <b>  What is purpose of Buffer class in Node?</b>
 </summary>
+
+`Buffer` class is a global class and can be accessed in application without importing buffer module. A Buffer is a kind of an array of integers and corresponds to a raw memory allocation outside the V8 heap. A Buffer cannot be resized.
+
 </details>
 
 <details>
 <summary>
-38.  <b> </b>
+38.  <b>   What is difference between synchronous and asynchronous method of fs module? </b>
 </summary>
+
+Every method in `fs` module has synchronous as well as asynchronous form. Asynchronous methods takes a last parameter as completion function callback and first parameter of the callback function is error. It is preferred to use asynchronous method instead of synchronous method as former never block the program execution where the latter one does.
+
 </details>
 
 <details>
 <summary>
-39.  <b> </b>
+39.  <b> What are streams? </b>
 </summary>
+
+Streams are objects that let you read data from a source or write data to a destination in continuous fashion. In Node.js, there are four types of streams.
+
+- **Readable** - Stream which is used for read operation.
+- **Writable** - Stream which is used for write operation.
+- **Duplex** - Stream which can be used for both read and write operation.
+- **Transform** - A type of duplex stream where the output is computed based on input.
 </details>
 
 <details>
 <summary>
-40.  <b> </b>
+40.  <b> What is Chaining in Node? </b>
 </summary>
+
+`Chanining` is a mechanism to connect output of one stream to another stream and create a chain of multiple stream operations. It is normally used with piping operations.
+
 </details>
 
 <details>
 <summary>
-41.  <b> </b>
+41.  <b>  How can you avoid callback hells? </b>
 </summary>
+
+- modularization: break callbacks into independent functions
+- use Promises
+- use yield with Generators and/or Promises
 </details>
 
 <details>
 <summary>
-42.  <b> </b>
+42.  <b>   How to avoid callback hell in Node.js?</b>
 </summary>
+
+Node.js internally uses a single-threaded event loop to process queued events. But this approach may lead to blocking the entire process if there is a task running longer than expected.
+
+Node.js addresses this problem by incorporating callbacks also known as higher-order functions. So whenever a long-running process finishes its execution, it triggers the callback associated.
+
+sometimes, it could lead to complex and unreadable code. More the no. of callbacks, longer the chain of returning callbacks would be.
+
+There are four solutions which can address the callback hell problem.
+
+**Make your program modular**
+
+It proposes to split the logic into smaller modules. And then join them together from the main module to achieve the desired result.
+
+**Use async mechanism**
+
+It is a widely used Node.js module which provides a sequential flow of execution.
+
+The async module has`<async.waterfall>`API which passes data from one operation to other using the next callback.
+
+Another async API `<async.map>` allows iterating over a list of items in parallel and calls back with another list of results.
+
+With the async approach, the caller’s callback gets called only once. The caller here is the main method using the async module.
+
+**Use promises mechanism**
+
+Promises give an alternate way to write async code. They either return the result of execution or the error/exception. Implementing promises requires the use of <.then()> function which waits for the promise object to return. It takes two optional arguments, both functions. Depending on the state of the promise only one of them will get called. The first function call proceeds if the promise gets fulfilled. However, if the promise gets rejected, then the second function will get called.
+
+**Use generators**
+
+Generators are lightweight routines, they make a function wait and resume via the yield keyword. Generator functions uses a special syntax <function\* ()>. They can also suspend and resume asynchronous operations using constructs such as promises or and turn a synchronous code into asynchronous.
+
 </details>
 
 <details>
 <summary>
-43.  <b> </b>
+43.  <b> Explain how does Node.js work? </b>
 </summary>
+
+A Node.js application creates a single thread on its invocation. Whenever Node.js receives a request, it first completes its processing before moving on to the next request.
+
+Node.js works asynchronously by using the event loop and callback functions, to handle multiple requests coming in parallel. An Event Loop is a functionality which handles and processes all your external events and just converts them to a callback function. It invokes all the event handlers at a proper time. Thus, lots of work is done on the back-end, while processing a single request, so that the new incoming request doesn’t have to wait if the processing is not complete.
+
+While processing a request, Node.js attaches a callback function to it and moves it to the back-end. Now, whenever its response is ready, an event is called which triggers the associated callback function to send this response.
+
 </details>
 
 <details>
 <summary>
-44.  <b> </b>
+44.  <b> When should we use Node.js? </b>
 </summary>
+
+`Node.js` is well suited for applications that have a lot of concurrent connections and each request only needs very few CPU cycles, because the event loop (with all the other clients) is blocked during execution of a function. I believe Node.js is best suited for real-time applications: online games, collaboration tools, chat rooms, or anything where what one user (or robot? or sensor?) does with the application needs to be seen by other users immediately, without a page refresh.
+
 </details>
 
 <details>
 <summary>
-45.  <b> </b>
+45.  <b> How does Node.js handle child threads?</b>
 </summary>
+
+Node.js, in its essence, is a single thread process. It does not expose child threads and thread management methods to the developer. Technically, Node.js does spawn child threads for certain tasks such as asynchronous I/O, but these run behind the scenes and do not execute any application JavaScript code, nor block the main event loop.
+
+If threading support is desired in a Node.js application, there are tools available to enable it, such as the ChildProcess module.
+
 </details>
 
 <details>
 <summary>
-46.  <b> </b>
+46.  <b> What is the preferred method of resolving unhandled exceptions in Node.js? </b>
 </summary>
+
+Unhandled exceptions in Node.js can be caught at the `Process` level by attaching a handler for `uncaughtException` event.
+
+```jsx harmony
+process.on("uncaughtException", function (err) {
+  console.log("Caught exception: " + err);
+});
+```
+
+However, `uncaughtException` is a very crude mechanism for exception handling and may be removed from Node.js in the future. An exception that has bubbled all the way up to the `Process` level means that your application, and Node.js may be in an undefined state, and the only sensible approach would be to restart everything.
+
+The preferred way is to add another layer between your application and the Node.js process which is called the domain.
+
+Domains provide a way to handle multiple different I/O operations as a single group. So, by having your application, or part of it, running in a separate domain, you can safely handle exceptions at the domain level, before they reach the `Process` level.
+
 </details>
 
 <details>
 <summary>
-47.  <b> </b>
+47.  <b> What is stream and what are types of streams available in Node.js?  </b>
 </summary>
+
+**Streams** are a collection of data that might not be available all at once and don’t have to fit in memory. Streams provide chunks of data in a continuous manner. It is useful to read a large set of data and process it.
+
+There is four fundamental type of streams:
+
+- Readable.
+- Writeable.
+- Duplex.
+- Transform.
+
+Readable streams as the name suggest used in reading a large chunk of data from a source. Writable streams are used in writing a large chunk of data to the destination.
+Duplex streams are both readable and writable ( Eg socket). Transform stream is the duplex stream which is used in modifying the data (eg zip creation).
+
 </details>
 
 <details>
 <summary>
-48.  <b> </b>
+48.  <b> What are the global objects of Node.js? </b>
 </summary>
+
+These objects are available in all modules:
+
+- process - The process object is a global that provides information about, and control over, the current Node.js process.
+- console - Used to print to stdout and stderr.
+- buffer - Used to handle binary data.
 </details>
 
 <details>
 <summary>
-49.  <b> </b>
+49.  <b> What is Piping in Node?  </b>
 </summary>
+
+**Piping** is a mechanism to connect output of one stream to another stream. It is normally used to get data from one stream and to pass output of that stream to another stream. There is no limit on piping operations.
+
 </details>
 
 <details>
 <summary>
-50.  <b> </b>
+50.  <b> Name some of the events fired by streams </b>
 </summary>
+
+Each type of Stream is an EventEmitter instance and throws several events at different instance of times. For example, some of the commonly used events are:
+
+- **data** - This event is fired when there is data is available to read.
+- **end** - This event is fired when there is no more data to read.
+- **error** - This event is fired when there is any error receiving or writing data.
+- **finish** - This event is fired when all data has been flushed to underlying system
 </details>
 
 <details>
 <summary>
-51.  <b> </b>
+51.  <b> What is the purpose of __filename variable? </b>
 </summary>
+
+The `__filename` represents the filename of the code being executed. This is the resolved absolute path of this code file. For a main program this is not necessarily the same filename used in the command line. The value inside a module is the path to that module file.
+
 </details>
 
 <details>
 <summary>
-52.  <b> </b>
+52.  <b> What tools can be used to assure consistent code style? </b>
 </summary>
+
+- JSLint by Douglas Crockford
+- JSHint
+- ESLint
+- JSCS
+
+These tools are really helpful when developing code in teams, to enforce a given style guide and to catch common errors using static analysis.
+
 </details>
 
 <details>
