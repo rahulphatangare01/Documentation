@@ -1173,36 +1173,578 @@ These tools are really helpful when developing code in teams, to enforce a given
 
 <details>
 <summary>
-53.  <b> </b>
+53.  <b> What's a stub? Name a use case </b>
 </summary>
+
+`Stubs` are functions/programs that simulate the behaviours of components/modules. Stubs provide canned answers to function calls made during test cases. Also, you can assert on with what these stubs were called.
+
+A use-case can be a file read, when you do not want to read an actual file:
+
+```jsx harmony
+var fs = require("fs");
+
+var readFileStub = sinon.stub(fs, "readFile", function (path, cb) {
+  return cb(null, "filecontent");
+});
+
+expect(readFileStub).to.be.called;
+readFileStub.restore();
+```
+
 </details>
 
 <details>
 <summary>
-54.  <b> </b>
+54.  <b>Does Node.js support multi-core platforms? And is it capable of utilizing all the cores? </b>
 </summary>
+
+Yes, Node.js would run on a multi-core system without any issue. But it is by default a single-threaded application, so it can’t completely utilize the multi-core system.
+
+However, Node.js can facilitate deployment on multi-core systems where it does use the additional hardware. It packages with a Cluster module which is capable of starting multiple Node.js worker processes that will share the same port.
+
 </details>
 
 <details>
 <summary>
-55.  <b> </b>
+55.  <b> Is Node.js entirely based on a single-thread? </b>
 </summary>
+
+Yes, it’s true that Node.js processes all requests on a single thread. But it’s just a part of the theory behind Node.js design. In fact, more than the single thread mechanism, it makes use of events and callbacks to handle a large no. of requests asynchronously.
+
+Moreover, Node.js has an optimized design which utilizes both JavaScript and C++ to guarantee maximum performance. JavaScript executes at the server-side by Google Chrome v8 engine. And the C++ lib UV library takes care of the non-sequential I/O via background workers.
+
+To explain it practically, let’s assume there are 100s of requests lined up in Node.js queue. As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. Once the workers finish processing requests, the registered callbacks get notified on event loop thread to pass the result back to the user.
+
 </details>
 
 <details>
 <summary>
-56.  <b> </b>
+56.  <b> Is Node.js entirely based on a single-thread?</b>
 </summary>
+
+Yes, it’s true that Node.js processes all requests on a single thread. But it’s just a part of the theory behind Node.js design. In fact, more than the single thread mechanism, it makes use of events and callbacks to handle a large no. of requests asynchronously.
+
+Moreover, Node.js has an optimized design which utilizes both JavaScript and C++ to guarantee maximum performance. JavaScript executes at the server-side by Google Chrome v8 engine. And the C++ lib UV library takes care of the non-sequential I/O via background workers.
+
+To explain it practically, let’s assume there are 100s of requests lined up in Node.js queue. As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. Once the workers finish processing requests, the registered callbacks get notified on event loop thread to pass the result back to the user.
+
 </details>
 
 <details>
 <summary>
-57.  <b> </b>
+57.  <b>When to not use Node.js? </b>
 </summary>
+
+We can use Node.js for a variety of applications. But it is a single threaded framework, so we should not use it for cases where the application requires long processing time. If the server is doing some calculation, it won’t be able to process any other requests. Hence, Node.js is best when processing needs less dedicated CPU time.
+
 </details>
 
 <details>
 <summary>
-58.  <b> </b>
+58.  <b> Why to use Buffers instead of binary strings to handle binary data ?</b>
 </summary>
+
+Pure JavaScript does not able to handle straight binary data very well. Since Node.js servers have to deal with TCP streams for reading and writing of data, binary strings will become problematic to work with as it is very slow and has a tendency to break. That's why it is always advisable to use Buffers instead of binary strings to handle binary data.
+
+</details>
+
+<details>
+<summary>
+59.  <b> How to gracefully Shutdown Node.js Server? </b>
+</summary>
+
+We can gracefully shutdown Node.js server by using the generic signal called SIGTERM or SIGINT which is used for program termination. We need to call SIGTERM or SIGINT which will terminate the program and clean up the resources utilized by the program.
+
+</details>
+
+<details>
+<summary>
+60.  <b>What are the timing features of Node.js? </b>
+</summary>
+
+The Timers module in Node.js contains functions that execute code after a set period of time.
+
+- setTimeout/clearTimeout - can be used to schedule code execution after a designated amount of milliseconds
+- setInterval/clearInterval - can be used to execute a block of code multiple times
+- setImmediate/clearImmediate - will execute code at the end of the current event loop cycle
+- process.nextTick - used to schedule a callback function to be invoked in the next iteration of the Event Loop
+
+```jsx harmony
+function cb() {
+  console.log("Processed in next iteration");
+}
+process.nextTick(cb);
+console.log("Processed in the first iteration");
+```
+
+Output:
+
+```jsx harmony
+Processed in the first iteration
+Processed in next iteration
+```
+
+</details>
+
+<details>
+<summary>
+61.  <b>Explain usage of NODE_ENV </b>
+</summary>
+
+Node encourages the convention of using a variable called NODE_ENV to flag whether we’re in production right now. This determination allows components to provide better diagnostics during development, for example by disabling caching or emitting verbose log statements. Setting NODE_ENV to production makes your application 3 times faster.
+
+```jsx harmony
+// Setting environment variables in bash before starting the node process
+$ NODE_ENV=development
+$ node
+
+// Reading the environment variable using code
+if (process.env.NODE_ENV === “production”)
+    useCaching = true;
+```
+
+</details>
+
+<details>
+<summary>
+62.  <b>What is LTS releases of Node.js why should you care? </b>
+</summary>
+
+An LTS(Long Term Support) version of Node.js receives all the critical bug fixes, security updates and performance improvements.
+
+LTS versions of Node.js are supported for at least 18 months and are indicated by even version numbers (e.g. 4, 6, 8). They're best for production since the LTS release line is focussed on stability and security, whereas the Current release line has a shorter lifespan and more frequent updates to the code. Changes to LTS versions are limited to bug fixes for stability, security updates, possible npm updates, documentation updates and certain performance improvements that can be demonstrated to not break existing applications.
+
+</details>
+
+<details>
+<summary>
+63.  <b>Provide some example of config file separation for dev and prod environments </b>
+</summary>
+
+A perfect and flawless configuration setup should ensure:
+
+- keys can be read from file AND from environment variable
+- secrets are kept outside committed code
+- config is hierarchical for easier findability
+- Consider the following config file:
+
+```jsx harmony
+var config = {
+  production: {
+    mongo: {
+      billing: "****",
+    },
+  },
+  default: {
+    mongo: {
+      billing: "****",
+    },
+  },
+};
+
+exports.get = function get(env) {
+  return config[env] || config.default;
+};
+```
+
+And it's usage:
+
+```jsx harmony
+const config = require("./config/config.js").get(process.env.NODE_ENV);
+const dbconn = mongoose.createConnection(config.mongo.billing);
+```
+
+</details>
+
+<details>
+<summary>
+64.  <b> How would you handle errors for async code in Node.js? </b>
+</summary>
+
+Handling async errors in callback style (error-first approach) is probably the fastest way to hell (a.k.a the pyramid of doom). It's better to use a reputable promise library or async-await instead which enables a much more compact and familiar code syntax like try-catch.
+
+Consider promises to catch errors:
+
+```jsx harmony
+doWork()
+  .then(doWork)
+  .then(doOtherWork)
+  .then((result) => doWork)
+  .catch((error) => {
+    throw error;
+  })
+  .then(verify);
+```
+
+or using async/await:
+
+```jsx harmony
+async function check(req, res) {
+  try {
+    const a = await someOtherFunction();
+    const b = await somethingElseFunction();
+    res.send("result");
+  } catch (error) {
+    res.send(error.stack);
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>
+65.  <b>  What's the difference between dependencies, devDependencies and peerDependencies in npm package.json file? </b>
+</summary>
+
+1. **dependencies** - Dependencies that your project needs to run, like a library that provides functions that you call from your code. They are installed transitively (if A depends on B depends on C, npm install on A will install B and C).
+
+2. **devDependencies** - Dependencies you only need during development or releasing, like compilers that take your code and compile it into javascript, test frameworks or documentation generators. They are not installed transitively (if A depends on B dev-depends on C, npm install on A will install B only).
+
+3. **peerDependencies** - Dependencies that your project hooks into, or modifies, in the parent project, usually a plugin for some other library or tool. It is just intended to be a check, making sure that the parent project (project that will depend on your project) has a dependency on the project you hook into. So if you make a plugin C that adds functionality to library B, then someone making a project A will need to have a dependency on B if they have a dependency on C. They are not installed (unless npm < 3), they are only checked for.
+</details>
+
+<details>
+<summary>
+66.  <b> How do you convert an existing callback API to promises?  </b>
+</summary>
+
+How to convert this callback code to Promise? Provide some examples.
+
+```jsx harmony
+function divisionAPI(number, divider, successCallback, errorCallback) {
+  if (divider == 0) {
+    return errorCallback(new Error("Division by zero"));
+  }
+  successCallback(number / divider);
+}
+```
+
+Answer:
+
+```jsx harmony
+function divisionAPI(number, divider) {
+  return new Promise(function (fulfilled, rejected) {
+    if (divider == 0) {
+      return rejected(new Error("Division by zero"));
+    }
+    fulfilled(number / divider);
+  });
+}
+
+// Promise can be used with together async\await in ES7 to make the program flow wait for a fullfiled result
+async function foo() {
+  var result = await divisionAPI(1, 2); // awaits for a fulfilled result!
+  console.log(result);
+}
+
+// Another usage with the same code by using .then() method
+divisionAPI(1, 2).then(function (result) {
+  console.log(result);
+});
+```
+
+Node.js 8.0.0 includes a new util.promisify() API that allows standard Node.js callback style APIs to be wrapped in a function that returns a Promise.
+
+```jsx harmony
+const fs = require("fs");
+const util = require("util");
+
+const readfile = util.promisify(fs.readFile);
+
+readfile("/some/file")
+  .then((data) => {
+    /** ... **/
+  })
+  .catch((err) => {
+    /** ... **/
+  });
+```
+
+</details>
+
+<details>
+<summary>
+67.  <b> What are async functions in Node? Provide some examples</b>
+</summary>
+
+With the release of Node.js 8, the long awaited async functions have landed in Node.js as well. ES 2017 introduced Asynchronous functions. Async functions are essentially a cleaner way to work with asynchronous code in JavaScript.
+
+**Async/Await is:**
+
+- The newest way to write asynchronous code in JavaScript.
+- It is non blocking (just like promises and callbacks).
+- Async/Await was created to simplify the process of working with and writing chained promises.
+- Async functions return a Promise. If the function throws an error, the Promise will be rejected. If the function returns a value, the Promise will be resolved.
+- Async functions can make use of the await expression. This will pause the async function and wait for the Promise to resolve prior to moving on.
+
+</details>
+
+<details>
+<summary>
+68.  <b> Explain what is Reactor Pattern in Node.js? </b>
+</summary>
+
+Reactor Pattern is an idea of non-blocking I/O operations in Node.js. This pattern provides a handler(in case of Node.js, a callback function) that is associated with each I/O operation. When an I/O request is generated, it is submitted to a `demultiplexer`.
+
+This demultiplexer is a notification interface that is used to handle concurrency in non-blocking I/O mode and collects every request in form of an event and queues each event in a queue. Thus, the demultiplexer provides the Event Queue.
+
+At the same time, there is an Event Loop which iterates over the items in the Event Queue. Every event has a callback function associated with it, and that callback function is invoked when the Event Loop iterates.
+
+</details>
+
+<details>
+<summary>
+69.  <b> How would you scale Node application? </b>
+</summary>
+
+We can scale Node application in following ways:
+
+- cloning using Cluster module.
+- decomposing the application into smaller services – i.e micro services.
+</details>
+
+<details>
+<summary>
+70.  <b>Explain some Error Handling approaches in Node.js you know about. Which one will you use? </b>
+</summary>
+
+Error handling in an asynchronous language works in a unique way and presents many challenges, some unexpected.
+There are four main error handling patterns in node:
+
+1. **Error return value**- doesn't work asynchronously
+
+```jsx harmony
+var validateObject = function (obj) {
+  if (typeof obj !== "object") {
+    return new Error("Invalid object");
+  }
+};
+```
+
+2. **Error throwing** - well-establish pattern, in which a function does its thing and if an error situation arises, it simply bails out throwing an error. Can leave you in an unstable state. It requires extra work to catch them. Also wrapping the async calls in try/catch won't help because the errors happen asynchronously. To fix this, we need domains. Domains provide an asynchronous try...catch.
+
+```jsx harmony
+var validateObject = function (obj) {
+  if (typeof obj !== "object") {
+    throw new Error("Invalid object");
+  }
+};
+
+try {
+  validateObject("123");
+} catch (err) {
+  console.log("Thrown: " + err.message);
+}
+```
+
+3. **Error callback** - returning an error via a callback is the most common error handling pattern in Node.js. Handling error callbacks can become a mess (callback hell or the pyramid of doom).
+
+```jsx harmony
+var validateObject = function (obj, callback) {
+  if (typeof obj !== "object") {
+    return callback(new Error("Invalid object"));
+  }
+  return callback();
+};
+
+validateObject("123", function (err) {
+  console.log("Callback: " + err.message);
+});
+```
+
+4. **Error emitting** - when emitting errors, the errors are broadcast to any interested subscribers and handled within the same process tick, in the order subscribed.
+
+```jsx harmony
+var Events = require("events");
+var emitter = new Events.EventEmitter();
+
+var validateObject = function (a) {
+  if (typeof a !== "object") {
+    emitter.emit("error", new Error("Invalid object"));
+  }
+};
+
+emitter.on("error", function (err) {
+  console.log("Emitted: " + err.message);
+});
+
+validateObject("123");
+```
+
+5. **Promises** for async error handling
+
+```jsx harmony
+doWork()
+  .then(doWork)
+  .then(doError)
+  .then(doWork)
+  .catch(errorHandler)
+  .then(verify);
+```
+
+6. **Try...catch with async/await** - ES7 Async/await allows us as developers to write asynchronous JS code that look synchronous.
+
+```jsx harmony
+async function f() {
+  try {
+    let response = await fetch("http://no-such-url");
+  } catch (err) {
+    alert(err); // TypeError: failed to fetch
+  }
+}
+
+f();
+```
+
+7. Await-to-js lib - async/await without try-catch blocks in Javascript
+
+```jsx harmony
+import to from 'await-to-js';
+
+async function main(callback) {
+    const [err,quote] = await to(getQuote());
+
+    if(err || !quote) return callback(new Error('No Quote found');
+
+    callback(null,quote);
+
+}
+```
+
+</details>
+
+<details>
+<summary>
+71.  <b> What is the difference between process.nextTick() and setImmediate() ? </b>
+</summary>
+
+The difference between process.nextTick() and setImmediate() is that process.nextTick() defers the execution of an action till the next pass around the event loop or it simply calls the callback function once the ongoing execution of the event loop is finished whereas setImmediate() executes a callback on the next cycle of the event loop and it gives back to the event loop for executing any I/O operations.
+
+</details>
+
+<details>
+<summary>
+72.  <b>  Why should you separate Express 'app' and 'server'?</b>
+</summary>
+
+Keeping the API declaration separated from the network related configuration (port, protocol, etc) allows testing the API in-process, without performing network calls, with all the benefits that it brings to the table: fast testing execution and getting coverage metrics of the code. It also allows deploying the same API under flexible and different network conditions. Bonus: better separation of concerns and cleaner code.
+
+API declaration, should reside in app.js:
+
+```jsx harmony
+var app = express();
+app.use(bodyParser.json());
+app.use("/api/events", events.API);
+app.use("/api/forms", forms);
+```
+
+Server network declaration, should reside in /bin/www:
+
+```jsx harmony
+var app = require("../app");
+var http = require("http");
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+```
+
+</details>
+
+<details>
+<summary>
+73.  <b> Rewrite the code sample without try/catch block </b>
+</summary>
+
+Consider the code:
+
+```jsx harmony
+async function check(req, res) {
+  try {
+    const a = await someOtherFunction();
+    const b = await somethingElseFunction();
+    res.send("result");
+  } catch (error) {
+    res.send(error.stack);
+  }
+}
+```
+
+Rewrite the code sample without try/catch block.
+
+Answer:
+
+```jsx harmony
+async function getData() {
+  const a = await someFunction().catch((error) => console.log(error));
+  const b = await someOtherFunction().catch((error) => console.log(error));
+  if (a && b) console.log("some result");
+}
+```
+
+or if you wish to know which specific function caused error:
+
+```jsx harmony
+async function loginController() {
+  try {
+    const a = await loginService().catch((error) => {
+      throw new CustomErrorHandler({
+        code: 101,
+        message: "a failed",
+        error: error,
+      });
+    });
+    const b = await someUtil().catch((error) => {
+      throw new CustomErrorHandler({
+        code: 102,
+        message: "b failed",
+        error: error,
+      });
+    });
+    //someoeeoe
+    if (a && b) console.log("no one failed");
+  } catch (error) {
+    if (!(error instanceof CustomErrorHandler)) {
+      console.log("gen error", error);
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>
+74.  <b> How the V8 engine works?  </b>
+</summary>
+
+V8 is a JavaScript engine built at the google development center, in Germany. It is open source and written in C++. It is used for both client side (Google Chrome) and server side (node.js) JavaScript applications.
+
+V8 was first designed to increase the performance of the JavaScript execution inside web browsers. In order to obtain speed, V8 translates JavaScript code into more efficient machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler like a lot of modern JavaScript engines such as SpiderMonkey or Rhino (Mozilla) are doing. The main difference with V8 is that it doesn’t produce bytecode or any intermediate code.
+
+</details>
+
+<details>
+<summary>
+75.  <b> How does the cluster module work? What’s the difference between it and a load balancer? </b>
+</summary>
+
+The cluster module performs fork from your server (at that moment it is already an OS process), thus creating several slave processes. The cluster module supports two methods of distributing incoming connections.
+
+The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
+
+The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
+
+The difference between a cluster module and a load balancer is that instead of distributing load between processes, the balancer distributes requests.
+
 </details>
