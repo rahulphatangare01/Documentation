@@ -10,6 +10,7 @@
         9. Basic Collaboration: Forking repositories, making pull requests.
 
 *** Advanced Git 
+
         1. Branch Management: Merging branches (git merge), resolving conflicts.
         2. Rebasing: Understanding git rebase and when to use it.
         3. Stashing Changes: Temporarily saving changes with git stash.
