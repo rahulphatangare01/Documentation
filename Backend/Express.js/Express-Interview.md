@@ -192,8 +192,17 @@ For convenience, you might consider using Nodemon as a development dependency wh
 
 <details>
 <summary>
-5.  <b> </b>
+5.  <b> How to get the name parameters in express?</b>
 </summary>
+
+This property is an object containing properties mapped to the named route “parameters”. For example, if you have the route /user/:name, then the “name” property is available as req.params.name. This object defaults to {}.
+
+```jsx harmony
+// GET /user/tj
+req.params.name;
+// => "tj"
+```
+
 </details>
 
 <details>
