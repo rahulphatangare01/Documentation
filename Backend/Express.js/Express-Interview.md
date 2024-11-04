@@ -576,26 +576,259 @@ Without the `next()` calls, the request would get stuck after the first middlewa
 
 <details>
 <summary>
-13.  <b> </b>
+13.  <b> What is the role of the express.Router class? </b>
 </summary>
+
+The `express.Router` is a powerful tool for managing multiple route controllers. It helps in organizing routes and their handling functions into modular, self-contained groups.
+
+**Key Features**
+
+1. **Modularity**: Rely on separate route modules for improved code organization, maintainability, and collaboration.
+
+2. **Middlewares**: Like the main express app, the router can also use middlewares to process incoming requests.
+
+3. **HTTP Method Chaining**: Simplifies route handling by allowing method-specific routes to be defined using method names.
+
+**Example: Middleware and Route Handling**
+
+```jsx harmony
+const express = require("express");
+const router = express.Router();
+
+// Logger Middleware
+router.use((req, res, next) => {
+  console.log("Router-specific Request Time:", Date.now());
+  next();
+});
+
+// "GET" method route
+router.get("/", (req, res) => {
+  res.send("Router Home Page");
+});
+
+// "POST" method route
+router.post("/", (req, res) => {
+  res.send("Router Home Page - POST Request");
+});
+
+module.exports = router;
+```
+
+In this example, we:
+
+- Utilize the built-in express.Router.
+- Attach a general-purpose middleware and two different HTTP method-specific routes.
+- The router is then integrated into the main express app using:
+
+```jsx harmony
+const app = express();
+const router = require("./myRouterModule");
+
+app.use("/routerExample", router);
+```
+
+Here, `app.use('/routerExample', router);` assigns all routes defined in the router to /routerExample.
+
 </details>
 
 <details>
 <summary>
-14.  <b> </b>
+14.  <b> How do you handle 404 errors in Express.js?</b>
 </summary>
+
+`Handling 404 errors` in Express is essential for capturing and responding to requests for non-existent resources. You typically use both middleware and `HTTP response` mechanisms for this purpose.
+
+**Middleware for 404s**
+Use `app.use `at the end of the middleware chain to capture unresolved routes.
+Invoke the middleware with next() and an Error object to forward to the error-handling middleware.
+Here is the Node.js code example:
+
+```jsx harmony
+app.use((req, res, next) => {
+  const err = new Error(`Not Found: ${req.originalUrl}`);
+  err.status = 404;
+  next(err);
+});
+```
+
+**Error-Handling Middleware for 404s and Other Errors**
+
+1. Define an error-handling middleware with four arguments. The first one being the error object.
+2. Check the error's status and respond accordingly. If it's a 404, handle it as a not-found error; otherwise, handle it as a server error.
+   Here is the Node.js code:
+
+```jsx harmony
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const message = err.message || "Internal Server Error";
+
+  res.status(status).send(message);
+});
+```
+
+**Full Example:**
+Here is the complete Node.js application:
+
+```jsx harmony
+const express = require("express");
+const app = express();
+const port = 3000;
+
+// Sample router for demonstration
+const usersRouter = express.Router();
+usersRouter.get("/profile", (req, res) => {
+  res.send("User Profile");
+});
+app.use("/users", usersRouter);
+
+// Capture 404s
+app.use((req, res, next) => {
+  const err = new Error(`Not Found: ${req.originalUrl}`);
+  err.status = 404;
+  next(err);
+});
+
+// Error-handling middleware
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(status).send(message);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+```
+
 </details>
 
 <details>
 <summary>
-15.  <b> </b>
+15.  <b> What are the differences between req.query and req.params?</b>
 </summary>
+
+In Express.js, `req.query` is used to access GET request parameters, while `req.params` is used to capture parameters defined in the **URL path**.
+
+**Understanding Express.js Routing**
+Express.js uses app.get() and similar functions to handle different types of HTTP requests.
+
+- **app.get**('/users/:id'): Matches GET requests to `/users/123` where `123` is the `:id` parameter in the path.
+
+**Accessing Request Data**
+**req.query**: Utilized to extract query string parameters from the request URL. Example: For the URL` /route?id=123`, use `req.query`.id to obtain 123.
+**req.params**: Used to retrieve parameters from the request URL path. For the route `/users/:id`, use `req.params.id` to capture the ID, such as for `/users/123`.
+
+**Code Example: Request Data**
+Here is the Express.js server setup:
+
+```jsx harmony
+const express = require("express");
+const app = express();
+const port = 3000;
+
+// Endpoint to capture query string parameter
+app.get("/query", (req, res) => {
+  console.log(req.query);
+  res.send("Received your query param!");
+});
+
+// Endpoint to capture URL parameter
+app.get("/user/:id", (req, res) => {
+  console.log(req.params);
+  res.send("Received your URL param!");
+});
+
+app.listen(port, () => console.log(`Listening on port ${port}!`));
+```
+
 </details>
 
 <details>
 <summary>
-16.  <b> </b>
+16.  <b>  Describe the purpose of req.body and how you would access it. </b>
 </summary>
+
+In an Express.js application, `req.body` is a property of the HTTP request object that contains data submitted through an `HTTP POST` request.
+
+The POST request might originate from an HTML form, a client-side JavaScript code, or another API client. The data in req.body is typically structured as a JSON object or a URL-encoded form.
+
+**Middleware and Parsing Request Body**
+
+The `express.json()` and `express.urlencoded()` middleware parse incoming Request objects before passing them on. These middlewares populate `req.body` with the parsed JSON and URL-encoded data, respectively.
+
+Here is an example of how you might set up body parsing in an Express app:
+
+```jsx harmony
+const express = require("express");
+const app = express();
+
+// Parse JSON and URL-encoded data into req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+```
+
+**Accessing req.body Data**
+
+- Once the body parsing middleware is in place, you can access the parsed data in your route handling functions:
+
+- **POST or PUT Requests**: When a client submits a POST or PUT request with a JSON payload in the request body, you can access this data through req.body.
+  Here is an example:
+
+**Client-side JavaScript:**
+
+```jsx harmony
+fetch("/example-route", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ key: "value" }),
+});
+```
+
+**Server-side Express route handler:**
+
+```jsx harmony
+app.post("/example-route", (req, res) => {
+  console.log(req.body); // Outputs: { key: 'value' }
+});
+```
+
+**HTML Forms**: When a form is submitted using <form> with action pointing to your Express route and method as POST or PUT, and the form fields are input elements within the form, req.body will contain these form field values.
+Here is an example:
+
+**HTML form**:
+
+```jsx harmony
+<form action="/form-endpoint" method="POST">
+  <input type="text" name="username" />
+  <input type="password" name="password" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+**Express route:**
+
+```jsx harmony
+app.post("/form-endpoint", (req, res) => {
+  console.log(req.body.username, req.body.password);
+});
+```
+
+A modern technique for sending form data using fetch is by setting the Content-Type header to 'application/x-www-form-urlencoded' and using the URLSearchParams object:
+
+```js harmony
+fetch("/form-endpoint", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body: new URLSearchParams({ username: "user", password: "pass" }),
+});
+```
+
+**Custom Parsers**: While Express provides built-in body parsers for JSON and URL-encoded data, you might receive data in another format. In such cases, you can create custom middleware to parse and shape the data as needed. This middleware should populate req.body.
+
 </details>
 
 <details>
