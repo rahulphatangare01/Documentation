@@ -1635,96 +1635,242 @@ Use `mocha`, `chai`, and `supertest` to write unit and integration tests for the
 
 <details>
 <summary>
-57.  <b> </b>
+57.  <b> How do you handle request validation in Express.js? </b>
 </summary>
+
+Use a library like express-validator for validation:
+
+```jsx harmony
+const { body, validationResult } = require("express-validator");
+
+app.post(
+  "/user",
+  [body("email").isEmail(), body("password").isLength({ min: 5 })],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    res.send("User data is valid");
+  }
+);
+```
+
 </details>
 
 <details>
 <summary>
-58.  <b> </b>
+58.  <b> How do you implement CORS in an Express.js app? </b>
 </summary>
+
+Use the cors middleware to handle Cross-Origin Resource Sharing.
+
+```jsx harmony
+const cors = require("cors");
+app.use(cors());
+```
+
 </details>
 
 <details>
 <summary>
-59.  <b> </b>
+59.  <b> Explain how you can use clustering to scale an Express.js app. </b>
 </summary>
+
+Clustering enables handling multiple requests by creating a separate process for each CPU core.
+
+```jsx harmony
+const cluster = require("cluster");
+const http = require("http");
+const numCPUs = require("os").cpus().length;
+
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i++) cluster.fork();
+} else {
+  const express = require("express");
+  const app = express();
+  app.get("/", (req, res) =>
+    res.send("Hello from worker " + cluster.worker.id)
+  );
+  app.listen(8000);
+}
+```
+
 </details>
 
 <details>
 <summary>
-60.  <b> </b>
+60.  <b> How do you connect Express.js with a MongoDB database </b>
 </summary>
+
+Use the mongoose library to connect and define schemas.
+
+```jsx harmony
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/mydb", { useNewUrlParser: true });
+```
+
 </details>
 
 <details>
 <summary>
-61.  <b> </b>
+61.  <b> How do you use query parameters in Express.js? </b>
 </summary>
+
+Access query parameters via `req.query`.
+
+```jsx harmony
+app.get("/search", (req, res) => {
+  const term = req.query.term;
+  res.send(`Searching for: ${term}`);
+});
+```
+
 </details>
 
 <details>
 <summary>
-62.  <b> </b>
+62.  <b> Explain how app.locals and res.locals work.</b>
 </summary>
+
+`app.locals` is a global variable for all requests, while `res.locals` is specific to the response.
+
+```jsx harmony
+app.locals.siteTitle = "My App";
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+```
+
 </details>
 
 <details>
 <summary>
-63.  <b> </b>
+63.  <b> How do you implement nested routes in Express.js? </b>
 </summary>
+
+Use `express.Router` to create nested routes.
+
+```jsx harmony
+const userRouter = express.Router();
+userRouter.get("/:id/profile", (req, res) => res.send("User Profile"));
+app.use("/users", userRouter);
+```
+
 </details>
 
 <details>
 <summary>
-64.  <b> </b>
+64.  <b> How do you handle file uploads in Express.js?</b>
 </summary>
+
+Use multer middleware for file uploads.
+
+```jsx harmony
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+app.post("/upload", upload.single("file"), (req, res) => {
+  res.send("File uploaded");
+});
+```
+
 </details>
 
 <details>
 <summary>
-65.  <b> </b>
+65.  <b> How can you create a custom middleware in Express.js?</b>
 </summary>
+
+Define middleware as a function with `req`, `res`, and `next` parameters.
+
+```jsx harmony
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+};
+app.use(logger);
+```
+
 </details>
 
 <details>
 <summary>
-66.  <b> </b>
+66.  <b> Explain the next function in middleware.</b>
 </summary>
+
+The next function allows passing control to the next middleware or route handler.
+
 </details>
 
 <details>
 <summary>
-67.  <b> </b>
+67.  <b> How do you handle rate limiting for individual routes? </b>
 </summary>
+
+Pass rate-limiting middleware to specific routes only.
+
+```jsx harmony
+app.get("/limited", rateLimit({ max: 10 }), (req, res) =>
+  res.send("Rate limited route")
+);
+```
+
 </details>
 
 <details>
 <summary>
-68.  <b> </b>
+68.  <b> How do you set custom headers in Express.js? </b>
 </summary>
+
+Use `res.set` to set custom headers.
+
+```jsx harmony
+app.get("/", (req, res) => {
+  res.set("X-Custom-Header", "CustomValue");
+  res.send("Headers set");
+});
+```
+
 </details>
 
 <details>
 <summary>
-69.  <b> </b>
+69.  <b> How do you use promises with Express.js routes?</b>
 </summary>
+
+Use async functions and `await` for asynchronous operations.
+
+```jsx harmony
+app.get("/async-route", async (req, res) => {
+  const result = await someAsyncFunction();
+  res.send(result);
+});
+```
+
 </details>
 
 <details>
 <summary>
-70.  <b> </b>
+70.  <b>How do you serve multiple applications on the same Express server? </b>
 </summary>
+
+Use `express.Router` for each application, mounted to different base paths
+
+```jsx harmony
+const app1 = express.Router();
+const app2 = express.Router();
+app.use("/app1", app1);
+app.use("/app2", app2);
+```
+
 </details>
 
 <details>
 <summary>
-71.  <b> </b>
+71.  <b> How do you handle JSON Web Tokens (JWT) refresh tokens in Express?   </b>
 </summary>
-</details>
 
-<details>
-<summary>
-72.  <b> </b>
-</summary>
+Implement JWT token refresh with routes to issue new access tokens using refresh tokens.
+
 </details>
