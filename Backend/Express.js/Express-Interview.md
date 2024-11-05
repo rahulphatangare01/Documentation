@@ -1279,66 +1279,452 @@ app.use(cors());
 
 <details>
 <summary>
-35.  <b> </b>
+36.  <b> How do you handle form data or JSON data in Express.js?</b>
+</summary>
+
+To handle incoming form data or JSON, Express provides built-in middleware `express.urlencoded` and `express.json`.
+
+```jsx harmony
+const express = require("express");
+const app = express();
+
+// Middleware to parse JSON and form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/submit", (req, res) => {
+  res.send(`Received data: ${req.body.name}`);
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+</details>
+
+<details>
+<summary>
+37.  <b>How do you handle errors in Express.js? </b>
+</summary>
+
+Error-handling middleware is used to catch errors and handle them appropriately.
+
+```jsx harmony
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res, next) => {
+  // Simulate an error
+  const err = new Error("Something went wrong!");
+  next(err);
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.message);
+  res.status(500).send("Server Error");
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+</details>
+
+<details>
+<summary>
+38.  <b> How do you handle cookies in Express.js? </b>
+</summary>
+
+You can use the cookie-parser middleware to handle cookies.
+
+```jsx harmony
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const app = express();
+
+app.use(cookieParser());
+
+app.get("/set-cookie", (req, res) => {
+  res.cookie("user", "John Doe");
+  res.send("Cookie has been set");
+});
+
+app.get("/get-cookie", (req, res) => {
+  res.send(`Cookie Value: ${req.cookies.user}`);
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+</details>
+
+## Express Pro Level Interview Questions
+
+<details>
+<summary>
+39.  <b> How do you implement authentication in Express.js using JWT (JSON Web Tokens) </b>
+</summary>
+
+JWT is used to securely transmit information between the client and the server.
+
+```jsx harmony
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const app = express();
+const secretKey = "your_secret_key";
+
+app.use(express.json());
+
+// Generate token
+app.post("/login", (req, res) => {
+  const user = { id: 1, username: "JohnDoe" }; // Dummy user
+  const token = jwt.sign(user, secretKey, { expiresIn: "1h" });
+  res.json({ token });
+});
+
+// Middleware to verify token
+const verifyToken = (req, res, next) => {
+  const token = req.headers["authorization"];
+  if (!token) return res.status(403).send("Token required");
+  jwt.verify(token, secretKey, (err, decoded) => {
+    if (err) return res.status(403).send("Invalid token");
+    req.user = decoded;
+    next();
+  });
+};
+
+// Protected route
+app.get("/protected", verifyToken, (req, res) => {
+  res.send(`Hello ${req.user.username}, welcome to the protected route!`);
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+</details>
+
+<details>
+<summary>
+40.  <b>How do you optimize performance in an Express.js application? </b>
+</summary>
+
+- Performance optimization techniques include:
+
+**Using GZIP compression** (compression middleware)
+**Caching responses**
+**Using asynchronous and non-blocking functions**
+**Reducing the number of middleware layers**
+**Example of GZIP compression:**
+
+```jsx harmony
+const express = require("express");
+const compression = require("compression");
+const app = express();
+
+app.use(compression()); // Enable GZIP compression
+
+app.get("/", (req, res) => {
+  res.send("This response is compressed");
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+</details>
+
+<details>
+<summary>
+41.  <b>How do you implement rate limiting in Express.js? </b>
+</summary>
+
+You can use the express-rate-limit middleware to limit the number of requests a client can make in a given time window.
+
+```jsx harmony
+const express = require("express");
+const rateLimit = require("express-rate-limit");
+const app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter); // Apply rate limiter
+
+app.get("/", (req, res) => {
+  res.send("Welcome! Rate limiting is applied.");
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+</details>
+
+<details>
+<summary>
+42.  <b>How do you handle WebSocket integration in an Express app? </b>
+</summary>
+
+Use socket.io for WebSocket connections in Express.
+
+```jsx harmony
+const http = require("http");
+const socketIo = require("socket.io");
+const server = http.createServer(app);
+const io = socketIo(server);
+```
+
+</details>
+
+<details>
+<summary>
+43.  <b>How do you optimize a heavy-load Express.js application? </b>
+</summary>
+
+- Use caching
+- CDN
+- database optimization
+- load balancing
+- clustering,
+</details>
+
+<details>
+<summary>
+44.  <b> How do you handle large payloads in Express.js?</b>
+</summary>
+
+- Use streaming
+- increase payload limits
+- implement pagination.
+
+</details>
+
+<details>
+<summary>
+45.  <b> How do you implement a microservices architecture with Express.js? </b>
+</summary>
+
+- Break down the application into small
+- independently deployable services communicating via REST or RPC.
+
+</details>
+
+<details>
+<summary>
+46.  <b> How can you implement socket.io in an Express app to handle real-time updates? </b>
+</summary>
+
+Use socket.io in conjunction with Express to enable real-time, bidirectional event-based communication.
+
+</details>
+
+<details>
+<summary>
+47.  <b> How would you configure SSL in an Express.js application?  </b>
+</summary>
+
+Use https module with SSL certificate
+
+```jsx harmony
+const https = require("https");
+const fs = require("fs");
+const server = https.createServer(
+  {
+    key: fs.readFileSync("key.pem"),
+    cert: fs.readFileSync("cert.pem"),
+  },
+  app
+);
+```
+
+</details>
+
+<details>
+<summary>
+48.  <b>  Explain middleware chaining in Express.js and its performance implications</b>
+</summary>
+
+Middleware chaining involves calling multiple middlewares in sequence; however, too many can slow down the app.
+
+</details>
+
+<details>
+<summary>
+49.  <b> How do you handle transaction management in Express with MongoDB? </b>
+</summary>
+
+Use session.startTransaction() in MongoDB to manage transactions.
+
+</details>
+
+<details>
+<summary>
+50.  <b>How do you handle multi-tenancy in an Express app </b>
+</summary>
+
+Implement multi-tenancy by structuring routes, separating databases, or using tenant identifiers.
+
+</details>
+
+<details>
+<summary>
+51.  <b>  How do you ensure security best practices in an Express.js app?</b>
+</summary>
+
+Use Helmet, sanitize inputs, secure headers, implement CORS, and rate limit.
+
+</details>
+
+<details>
+<summary>
+52.  <b> How can you handle reverse proxying in Express? </b>
+</summary>
+
+Use a reverse proxy like Nginx or set up reverse proxy headers `(X-Forwarded-*).`
+
+</details>
+
+<details>
+<summary>
+53.  <b> How do you create custom error classes in Express? </b>
+</summary>
+
+Create custom error classes by extending the Error class.
+
+</details>
+
+<details>
+<summary>
+54.  <b> How do you handle pagination and sorting in an Express API? </b>
+</summary>
+
+Create custom error classes by extending the Error class.
+
+Pass `limit`, `offset`, and `sort` parameters in the request and implement them in the query.
+
+</details>
+
+<details>
+<summary>
+55.  <b> How do you enable gzip compression in Express? </b>
+</summary>
+
+Use the `compression` middleware to enable `gzip` compression.
+
+</details>
+
+<details>
+<summary>
+56.  <b>Explain how you would test an Express.js API. </b>
+</summary>
+
+Use `mocha`, `chai`, and `supertest` to write unit and integration tests for the API.
+
+</details>
+
+<details>
+<summary>
+57.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+58.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+59.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+60.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+61.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+62.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+63.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+64.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+65.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+66.  <b> </b>
 </summary>
 </details>
 
 <details>
 <summary>
-35.  <b> </b>
+67.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+68.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+69.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+70.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+71.  <b> </b>
+</summary>
+</details>
+
+<details>
+<summary>
+72.  <b> </b>
 </summary>
 </details>
