@@ -750,7 +750,7 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 In an Express.js application, `req.body` is a property of the HTTP request object that contains data submitted through an `HTTP POST` request.
 
-The POST request might originate from an HTML form, a client-side JavaScript code, or another API client. The data in req.body is typically structured as a JSON object or a URL-encoded form.
+The POST request might originate from an HTML form, a client-side JavaScript code, or another API client. The data in `req.body` is typically structured as a JSON object or a URL-encoded form.
 
 **Middleware and Parsing Request Body**
 
@@ -827,44 +827,151 @@ fetch("/form-endpoint", {
 });
 ```
 
-**Custom Parsers**: While Express provides built-in body parsers for JSON and URL-encoded data, you might receive data in another format. In such cases, you can create custom middleware to parse and shape the data as needed. This middleware should populate req.body.
+**Custom Parsers**: While Express provides built-in body parsers for JSON and URL-encoded data, you might receive data in another format. In such cases, you can create custom middleware to parse and shape the data as needed. This middleware should populate `req.body`.
 
 </details>
 
 <details>
 <summary>
-17.  <b> </b>
+17.  <b> How do you create a middleware that logs the request method and URL for every request? </b>
 </summary>
+
+- In Express.js, middlewares allow you to handle HTTP requests. Here, you will learn how to create a simple logging middleware that records the request method and URL.
+
+**Setting Up the Express App**
+
+First, install Express via npm, and set up your app.js file:
+
+```jsx harmony
+const express = require("express");
+const app = express();
+```
+
+**Creating the Logging Middleware**
+Define a logging function that extracts the request method and URL, and then use app.use() to mount it as middleware.
+
+```jsx harmony
+// Logging Middleware
+const logRequest = (req, res, next) => {
+  console.log(`Received ${req.method}  request for: ${req.url}`);
+  next(); // Call next to proceed to the next middleware
+};
+
+// Mount the middleware for all routes
+app.use(logRequest);
+```
+
+**Testing the Setup**
+Use `app.get()` to handle GET requests, and app.listen() to start the server.
+
+```jsx harmony
+// Sample route
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+```
+
+When you visit `http://localhost:3000/` in your browser and check the server console, you should see the request being logged.
+
 </details>
 
 <details>
 <summary>
-18.  <b> </b>
+18.  <b>What are some of the salient features of express? </b>
 </summary>
+
+1. **Middlewares**: Set up middlewares in order to respond to HTTP/RESTful Requests.
+2. **Routing**: It is possible to defines a routing table in order to perform different HTTP operations.
+3. **Templates**: Dynamically renders HTML Pages based on passing arguments to templates.
+4. **High Performance**: Express prepare a thin layer, therefore, the performance is adequate.
+5. **Database Support**: Express supports RDBMS as well as NoSQL databases.
+6. **MVC Support**: Organize the web application into an MVC architecture. Manages everything from routes to rendering view and preforming HTTP request.
 </details>
 
 <details>
 <summary>
-19.  <b> </b>
+19.  <b>How to get the name parameters in express? </b>
 </summary>
+
+This property is an object containing properties mapped to the named route `“parameters”`.
+For example, if you have the route /user/:name, then the “name” property is available as req.params.name. This object defaults to {}.
+
+```jsx harmony
+// GET /user/tj
+req.params.name;
+// => "tj"
+```
+
 </details>
 
 <details>
 <summary>
-20.  <b> </b>
+20.  <b>How to retrieve the get query string parameters using express? </b>
 </summary>
+
+The query string is the part that comes after the URL path, and starts with a question mark ?.
+
+```jsx harmony
+
+?height=6&weight=60
+//req.query.height - 6
+//req.query.weight - 60
+```
+
 </details>
 
 <details>
 <summary>
-21.  <b> </b>
+21.  <b> How to send a response back using express?</b>
 </summary>
+
+we can use any one of these commands
+
+```jsx harmony
+
+function(req, res) {
+	res.send('Hello World!')
+}
+function(req, res) {
+	res.end('Hello World!')
+}
+function(req, res) {
+	res.json({title:'Hello World!'})
+}
+```
+
 </details>
 
 <details>
 <summary>
-22.  <b> </b>
+22.  <b> How to set http response status using express? </b>
 </summary>
+
+we can either use res.status() or res.sendStatus()
+
+```jsx hrmony
+res.status(404).send("File not found");
+
+//if sendStatus we no need to write send method , i will pre send a few inbuilt messages upon using that
+
+res.sendStatus(200);
+// === res.status(200).send('OK')
+
+res.sendStatus(403);
+// === res.status(403).send('Forbidden')
+
+res.sendStatus(404);
+// === res.status(404).send('Not Found')
+
+res.sendStatus(500);
+// === res.status(500).send('Internal Server Error')
+```
+
 </details>
 
 <details>
