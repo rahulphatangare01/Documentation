@@ -1119,57 +1119,615 @@ welcome = function(name: string): void {
 
 <details>
 <summary>
-46.<b></b>
+46.<b>  What does "type inference" mean in the context of TypeScript?</b>
 </summary>
+
+In TypeScript, `type inference` is a core feature that allows the type of a variable to be automatically determined from its value. This provides the benefits of static typing without the need for explicit type annotations.
+
+**How It Works**
+TypeScript employs a best `common type algorithm` to infer a variable's type. When TypeScript encounters multiple types for a variable during assignment or an array literal, it computes the union of these types and selects the best common type for the variable.
+
+**Code Example: Type Inference**
+
+Consider the following code:
+
+```jsx harmony 
+let value = 10; // Type 'number' inferred
+let message = "Hello, TypeScript!"; // Type 'string' inferred
+
+function add(a: number, b: number) {
+    return a + b;
+}
+
+let sum = add(5, 7); // Type 'number' inferred
+
+```
+
+**TypeScript can infer the most likely type from the context, such as**:
+
+- When a value is assigned immediately, TypeScript assigns the value's type to the variable.
+- Type information from adjacent types is used to determine the best common type. If all values are of a compatible type, that type is used.
+
+**Benefits of Type Inference**
+**Conciseness**: Eliminates the need for explicit type declarations, leading to more compact and readable code.
+**Adaptability**: Codebase types align naturally with values, enhancing maintainability when values change.
+**Error Reduction**: Reduces the risk of inconsistencies between the declared type and the actual value.
+
 </details>
 
 
 <details>
 <summary>
-47.<b></b>
+47.<b> Explain the use of 'let' and 'const' in TypeScript.</b>
 </summary>
+
+TypeScript makes use of `const` and `let` for variable declaration. These two keywords offer explicitness, scoping, and immutability for efficient code maintenance.
+
+**Core Distinctions**
+
+**const**: Designates constants that remain unchanged once declared. It's important to note that this makes the reference immutable but doesn't actively prevent alteration of the internal state for complex objects like arrays.
+
+**let**: Initiates variables with standard mutable behavior.
+
+**Code Example: const**
+Here is the TypeScript code:
+
+```jsx harmony 
+const productId: number = 5;
+let productName: string = 'Tesla';
+
+const getProductDetails = (id: number): string => {
+  return `Product ID: ${id}`;
+};
+
+// Attempting to modify will result in a compilation error
+// productId = 6;
+
+// Reference is still immutable
+const anotherProductId: number = 10;
+// This will throw a compilation error since it's a constant
+// anotherProductId = 12;
+
+// Modifying internal state of an object is allowed for a const
+const myArray: number[] = [1, 2, 3];
+myArray.push(4);
+
+```
+
+**Code Example: let**
+Here is the TypeScript code:
+
+```jsx harmony 
+let vehicleType: string = 'Car';
+
+if (true) {
+  let vehicleType: string = 'Motorcycle';
+  console.log(vehicleType);  // Output: Motorcycle
+}
+
+console.log(vehicleType);  // Output: Car
+
+```
 </details>
 
 
 <details>
 <summary>
-48.<b></b>
+48.<b> How do you compile TypeScript files into JavaScript?</b>
 </summary>
+
+Compiling `TypeScript` (.ts) into `JavaScript` (.js) involves integrating a TypeScript compiler (`tsc`). You can customize the compilation process using tsconfig.json and even adopt more advanced methods to suit project needs:
+
+**Workflow Steps**
+1. **File Creation**: Write TypeScript files (.ts).
+2. **Compiler Config**: Set up a tsconfig.json file with compilation options.
+3. **Compile**: Execute the tsc command to initiate the compilation process.
+4. **Output Verification**: Review the generated JavaScript files.
+
+**TypeScript Configuration** (`tsconfig.json`)
+Here is the tsconfig.json file. The full configuration guide is available here.
+
+```jsx harmony 
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "strict": true,    
+    "outDir": "dist",
+    "rootDir": "src"  
+  },
+  "include": [
+    "src/**/*.ts"    
+  ],
+  "exclude": [      
+    "node_modules",   
+    "**/*.spec.ts"    
+  ]
+}
+```
+
+**Practical Example: Vineyard Residential Task Management App**
+Here is a practical and comprehensive `tsconfig.json` file.
+
+```jsx harmony 
+
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["dom", "es2015", "es5", "es6", "es7", "es2015.collection"],
+    "allowJs": true,
+    "checkJs": false,
+    "jsx": "react",
+    "declaration": false,
+    "sourceMap": true,
+    "outDir": "dist",  
+    "rootDir": "src",
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": ["node_modules/@types", "custom-typings"],
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "utils/*": ["src/utils/*"],
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "incremental": true,
+    "diagnostics": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "newLine": "LF",
+    "watchOptions": {
+      "watchFile": "useFsEvents",  
+      "fallbackPolling": "dynamicPriority",   
+      "polling": true,
+      "esModuleInterop": true,
+            "pollingInterval": 2500,
+      
+      "followSymlinks": true
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "@types"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
+```
+
+**Advanced Configuration**
+**Project Reference**: Useful for code splitting in large projects.
+**Custom Transformers**: Employ custom logic during the compilation process.
+**Programmatic API**: Provides flexibility in managing compiler settings and execution.
 </details>
 
 
 <details>
 <summary>
-49.<b></b>
+49.<b>Explain classes in TypeScript. How are they different from ES6 classes? </b>
 </summary>
+
+While TypeScript and **ES6** classes share many similarities, TypeScript's classes offer additional features and strong typing to make your code more robust.
+
+**Key Shared Class Features**
+**Inheritance**: Subclasses (children) can extend parent classes, inheriting their methods and properties.
+**Polymorphism**: Derived classes can define methods with the same name as their parent.
+**Encapsulation**: Data hiding is supported through access modifiers, such as public, private, and protected.
+**Constructor**: Instantiation starts with a constructor method, if defined.
+
+**Unique TypeScript Class Features**
+
+1. **Field Declaration**
+In TypeScript, you can specify fields directly in the class without initializing them. Automatic initialization to `undefined` occurs during object creation. ES6 requires initializing fields in the constructor or within their declaration.
+
+```jsx harmony 
+class Example {
+    // Field is automatically initialized to undefined upon object creation
+    someField: string;
+}
+
+```
+
+2. **Abstract Classes**
+TypeScript supports abstract classes to serve as a blueprint for other classes. They cannot be instantiated on their own but can provide some implementation that derived classes can override.
+
+```jsx harmony
+
+abstract class AbstractExample {
+    abstract someMethod(): void;  // Method has no implementation (abstract)
+}
+```
+
+3. **Readonly Properties**
+You can mark class properties as `readonly`, ensuring they are only set upon declaration or within the class constructor.
+
+```jsx harmony 
+class Example {
+    readonly id: number;
+    constructor(id: number) {
+        this.id = id;  // Readonly can only be assigned in the constructor or declaration
+    }
+}
+
+```
+
+4. **Static Members**
+Classes in TypeScript support static members, such as properties and methods that belong to the class itself, rather than to instances of the class.
+
+
+```jsx harmony 
+class Example {
+    static count = 0;  // Static property
+    static incrementCount() {
+        Example.count++;
+    }
+}
+```
+
+5. **Accessor Functions**
+You can define `get` and `set` functions in TypeScript, known as accessor functions, to control how class properties are accessed and modified.
+
+
+```jsx harmony 
+class Example {
+    private _name: string;
+
+    get name(): string {
+        return this._name;
+    }
+
+    set name(newName: string) {
+        this._name = newName.trim();
+    }
+}
+
+```
+
+6. **Parameter Properties**
+TypeScript provides a shortcut to declare a property and initialize it from the constructor parameter. This method can make code more concise, especially when a constructor parameter corresponds directly to a class property.
+
+```jsx harmony 
+class Example {
+    constructor(private _name: string, public age: number) {
+        // Private _name property created and initialized from constructor parameter
+        // Public age property created and initialized from constructor parameter
+    }
+}
+
+```
+
+**Intersection Types for Classes**
+In TypeScript, when you define a base class and then later extend it, you are creating an intersection type. This means the child class will inherit all the properties and methods from both its parent(s) and itself.
+
+**ES6 Additional Features not Present in TypeScript**
+
+**Class Expressions**
+Both ES6 and TypeScript support class expressions, which allows you to define a class without a class name.
+
+In ES6:
+
+```jsx harmony 
+
+const Animal = class {
+    // Class methods and properties defined here
+};
+```
+
+**Iterator Protocol**
+ES6 classes support the Iterator protocol, making it easier to iterate over objects.
+
+
+```jsx harmony 
+class IterableExample implements Iterable<string> {
+    // Implement iterator function for strings
+    [Symbol.iterator]() {
+        let index = 0;
+        const data = ['one', 'two', 'three'];
+        return {
+            next: () => {
+                if (index < data.length) {
+                    return { value: data[index++], done: false };
+                }
+                return { value: undefined, done: true };
+            }
+        };
+    }
+}
+```
 </details>
 
 
 <details>
 <summary>
-50.<b></b>
+50.<b> How do you implement Inheritance in TypeScript?</b>
 </summary>
+
+Let's look at how you can use inheritance in TypeScript using both **ES6 classes** and **prototypal inheritance**.
+
+1. **Inheritance with ES6 Class Syntax**
+With the advent of ES6, a more familiar class-based inheritance method was introduced. This method is usually easier to read and understand.
+
+**Code Example: Inheritance using ES6 Classes**
+Here is the TypeScript code:
+
+```jsx harmony 
+class Animal {
+  private name: string;
+
+  constructor(theName: string) {
+    this.name = theName;
+  }
+
+  move(distanceInMeters: number = 0) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
+  }
+}
+
+class Snake extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+
+  move(distanceInMeters = 5) {
+    console.log("Slithering...");
+    super.move(distanceInMeters);
+  }
+}
+
+const mySnake = new Snake("Cobra");
+mySnake.move();  // Output: Slithering... Cobra moved 5m.
+
+```
+
+2. **Inheritance with Prototypal Methodology**
+Prior to ES6, TypeScript, like JavaScript, used a prototypal inheritance approach.
+
+The prototypal mechanism can be useful when developing complex object structures, but it is important to be aware of the nuances in order to avoid unexpected behavior.
+
+**Code Example: Prototypal Inheritance in TypeScript**
+Here is the TypeScript code:
+
+```jsx harmony 
+
+// Define the Parent Class
+function Animal(this: Animal, name: string) {
+  this.name = name;
+}
+
+Animal.prototype.move = function(distanceInMeters: number = 0) {
+  console.log(`${this.name} moved ${distanceInMeters}m.`);
+};
+
+// Define the Child Class
+function Snake(name: string) {
+  Animal.call(this, name);
+}
+
+// Set up the Inheritance
+Snake.prototype = Object.create(Animal.prototype);
+Snake.prototype.constructor = Snake;
+
+// Override the Base Type's Method
+Snake.prototype.move = function(distanceInMeters = 5) {
+  console.log("Slithering...");
+  Animal.prototype.move.call(this, distanceInMeters);
+};
+
+const mySnake = new Snake("Cobra");
+mySnake.move();  // Output: Slithering... Cobra moved 5m.
+```
+
+**Simplified Methods**
+Using the prototypal construct can be perplexing at first, but its strength lies in its flexibility.
+
+You can avoid the complexities of direct prototype assignments using ES5 derived constructions, as seen next:
+
+
+```jsx harmony
+function Animal(name: string) {
+  this.name = name;
+}
+
+Animal.prototype.move = function(distanceInMeters: number = 0) {
+  console.log(`${this.name} moved ${distanceInMeters}m.`);
+};
+
+function Snake(name: string) {
+  Animal.call(this, name);
+}
+
+// Utilize `Object.create` for simplified prototype delegation
+Snake.prototype = Object.create(Animal.prototype);
+Snake.prototype.constructor = Snake;
+
+Snake.prototype.move = function(distanceInMeters = 5) {
+  console.log("Slithering...");
+  Animal.prototype.move.call(this, distanceInMeters);
+};
+```
 </details>
 
 
 <details>
 <summary>
-51.<b></b>
+51.<b> What are access modifiers and how do they work in TypeScript?</b>
 </summary>
+
+**Access modifiers** are TypeScript's way of controlling class member visibility and mutability. They enforce encapsulation and are especially useful for object-oriented design.
+
+**Key Modifiers**
+**Public**: Default for class members. They are accessible from both inside and outside the class.
+
+**Protected**: Members can be accessed within the class and its subclasses. They help establish the "is-a" relationship.
+
+**Private**: Marks members as accessible only within the declaring class. This ensures they're not modified or accessed externally.
+
+**Code Example: Access Modifiers in Action**
+Here is the TypeScript code:
+
+```jsx harmony 
+
+class Person {
+    public name: string;
+    private age: number;
+    protected contact: string;
+
+    constructor(name: string, age: number, contact: string) {
+        this.name = name;
+        this.age = age;
+        this.contact = contact;
+    }
+}
+
+class Employee extends Person {
+    private employeeId: string;
+
+    constructor(name: string, age: number, contact: string, employeeId: string) {
+        super(name, age, contact);
+        this.employeeId = employeeId;
+    }
+
+    public displayDetails(): void {
+        console.log(`${this.name} - ${this.age} - ${this.contact} - ${this.employeeId}`);
+    }
+}
+
+// Somewhere in your code
+const person = new Person("John Doe", 30, "1234567");
+console.log(person.name);  // Accessible
+console.log(person.age);   // ERROR: 'age' is private
+
+const employee = new Employee("Jane Doe", 25, "2345678", "E123");
+console.log(employee.contact);  // ERROR: 'contact' is protected
+employee.displayDetails();     // Correctly displays details
+
+employee.age = 35;    // ERROR: 'age' is private
+employee.contact = "3456789";  // ERROR: 'contact' is protected
+```
 </details>
 
 
 <details>
 <summary>
-52.<b></b>
+52.<b> Discuss Abstract classes and their purposes in TypeScript.</b>
 </summary>
+
+
+In TypeScript, **abstract classes serve as blueprints** that guide derived classes, essentially laying out the structure without necessarily providing complete implementations of methods.
+
+**Core Features of Abstract Classes**
+
+**Method Signatures**
+**Abstract classes define method signatures** without specifying their functionality. This feature provides a comprehensive form for derived classes to work from.
+
+**Specific Method Definitions**
+In addition to method signatures, abstract classes can contain completely implemented methods. These methods either support the abstract methods or serve as independent functionalities.
+
+**Abstract and Non-Abstract Members Separation**
+Abstract classes clearly demarcate between methods that require implementation by derived classes and those that are either fully implemented or optional.
+
+**Common Use-Cases for Abstract Classes**
+**Facilitate Reusability**: Abstract classes help in consolidating common or shared functionalities among several derived classes.
+
+**Contract Enforcement**: They ensure that derived classes conform to a shared structure, guaranteeing a defined set of methods that must be implemented.
+
+**Partial Implementations**: Abstract classes allow for a mix of fully implemented methods alongside those requiring concrete implementations in derived classes.
+
+**TypeScript Utility: Static Properties**
+Abstract classes in TypeScript can have `static members`, which belong to the class itself and not to any specific instance. This feature provides a convenient way to define properties or methods that are accessible without the need for class instantiation.
+
+**Code Example: Abstract Class**
+Here is the TypeScript code:
+
+```jsx harmony 
+abstract class Shape {
+    abstract getArea(): number;
+    abstract getPerimeter(): number;
+    color: string;
+
+    constructor(color: string) {
+        this.color = color;
+    }
+
+    static defaultColor: string = 'red';
+
+    describe() {
+        return `This shape is ${this.color}.`;
+    }
+}
+
+// This will throw an error because the derived class does not provide concrete implementations for abstract methods.
+class Circle extends Shape { 
+    constructor(public radius: number, color: string) {
+        super(color);
+    }
+
+    // The 'Circle' class inherited the following properties from 'Shape', but neither implements nor specifies them in the derived class: 'getArea' and 'getPerimeter'.
+    getArea(): number {
+        return Math.PI * this.radius ** 2;
+    }
+
+    getPerimeter(): number {
+        return 2 * Math.PI * this.radius;
+    }
+}
+
+const myCircle = new Circle(5, 'blue');
+console.log(myCircle.getArea()); // Outputs: 78.54
+console.log(myCircle.describe()); // Outputs: This shape is blue.
+console.log(Shape.defaultColor); // Outputs: red
+```
 </details>
 
 
 <details>
 <summary>
-53.<b></b>
+53.<b> Can you describe the use of Constructors within TypeScript classes?</b>
 </summary>
+
+**TypeScript** provides a convenient way to define **constructors** for classes using the `constructor` keyword. A constructor method allows you to initialize class members and can have access specifiers. They are useful for setting up an object's initial state.
+
+**Key Features**
+
+**Automatic Invocation**: The constructor is automatically called when an object of the class is instantiated.
+**Single Unique Constructor**: A class can only have one constructor, providing a centralized place for initialization.
+**Overload Capabilities**: You can overload a constructor to define multiple ways of object initialization.
+
+**Example: Constructor in TypeScript**
+We use the this keyword to refer to the current instance, ensuring proper data assignment.
+
+```jsx harmony 
+
+class Person {
+  // Member variables
+  name: string;
+  age: number;
+  
+  // Constructor
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+**Constructor Access Modifiers**
+TypeScript supports `access modifiers` on constructor parameters, enabling concise and safe class initialization.
+
+**Public**: Parameters without a modifier are public by default.
+**Private**: Adding the `private` keyword makes them accessible within the class only.
+**Read-Only**: Combining `readonly` with parameter and the private or public access modifier ensures the parameter is assigned a value just once, in the constructor.
 </details>
 
 
