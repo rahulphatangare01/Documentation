@@ -40,62 +40,149 @@ While HTML offers static content, CSS and JavaScript enable additional layers of
 
 <details>
 <summary>
-2.<b></b>
+2.<b>   What is a meta tag?</b>
 </summary>
+
+A `meta tag` provides metadata about a web page. The page information is not displayed on the web page.
+but is used by browsers and search engines to understand and categorize the content of the page such as page description, keywords, author, and viewport settings for responsive design.
+
+```jsx harmony
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> //Special characters to use like ASCII (American Standard Code for Information Interchange) The ASCII code for uppercase 'A' is 65.The ASCII code for lowercase 'a' is 97.The ASCII code for the digit '0' is 48.
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is food description">
+    <meta name="keyword" content="food, food service, food industry">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Nandakishore">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Food4You</title>
+</head>
+<body>
+</body>
+</html>
+
+```
+
 </details>
 
 <details>
 <summary>
-3.<b></b>
+3.<b> Difference between link and anchor tag?</b>
 </summary>
+
+- `Link` tag It is used for linking the external resources file.
+- `Anchor` tag It is used for linking to navigate one web page to another web page and these links are clickable.
 </details>
 
 <details>
 <summary>
-4.<b></b>
+4.<b> .What are the new input types in HTML5?</b>
 </summary>
+
+New input types offered by `HTML5`
+
+- type=”week”
+- type=”month”
+- type=”time”
+- type=”datetime”
+- type=”datetime-local”
+- type=”color”
+- type=”search”
+- type=”range”
+- type=”url”
+
 </details>
 
 <details>
 <summary>
-5.<b></b>
+5.<b>  What are the different types of lists in HTML?</b>
 </summary>
+
+**There are 3 types of lists:**
+
+- **Ordered list** It's used when you want to display a list of items and each item is marked with a number.
+- **Unordered list** On the other hand an unordered list displays a list of items and each item is marked with a bullet point.
+- **Definition list** each list item with a title and a description.
+
+```jsx harmony
+<ol type="I">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Carrot</li>
+</ol>
+<ul type="circle">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Carrot</li>
+</ul>
+```
+
 </details>
 
 <details>
 <summary>
-6.<b></b>
+6.<b>  What is a marquee in HTML?</b>
 </summary>
+
+A` marquee tag` is used to make text or images scroll automatically on a web page. However, it's no longer in modern (HTML5)
+
 </details>
 
 <details>
 <summary>
-7.<b></b>
+7.<b> What is the difference between HTML and CSS?</b>
 </summary>
+
+HTML is used to display the content on a web page, while CSS is used to control the presentation, layout, and design of a web page.
+
 </details>
 
 <details>
 <summary>
-8.<b></b>
+8.<b> How many ways to write css in HTML?</b>
 </summary>
+There are three ways to write CSS in HTML documents:
+
+- Inline
+- Internal
+- External
 </details>
 
 <details>
 <summary>
-9.<b></b>
+9.<b> What is dom in HTML?</b>
 </summary>
+DOM stands for Document Object Model. When a web page is getting loaded that time the browser creates a dom of the page and it is constructed as a tree of objects.
 </details>
 
 <details>
 <summary>
-10.<b></b>
+10.<b> What are the various formatting tags in HTML5?</b>
 </summary>
+
+```jsx harmony
+<sup></sup> //Superscript
+<sub></sub> //Subscript
+<del></del> //strikethrough
+<strong></strong> //Bold
+<em></em> //Italic or emphasized
+```
+
 </details>
 
 <details>
 <summary>
-11.<b></b>
+11.<b> What are the root tags in html?</b>
 </summary>
+
+There are some root tags. Without including these root tags in HTML we can’t create web pages.
+
+- html
+- head
+- body
 </details>
 
 <details>
