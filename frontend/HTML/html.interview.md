@@ -1354,14 +1354,30 @@ Syntax
 
 <details>
 <summary>
-51.<b></b>
+51.<b> What is Character Encoding? </b>
 </summary>
+
+Character encoding is a method of converting bytes into characters. To validate or display an HTML document properly, a program must choose a proper character encoding. This is specified in the tag:
+
+```jsx harmony
+<meta charset="utf-8" />
+```
+
 </details>
 
 <details>
 <summary>
-52.<b></b>
+52.<b>  What does async and defer refer in script tag? Describe the difference between <script>, <script async> and <script defer></b>
 </summary>
+
+- **Async**: Downloads the script file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading.
+
+- **Defer**: Defer downloads the script file during HTML parsing and will only execute it after the HTML parser has completed. Not all browsers support this.
+
+The async attribute is used to indicate to the browser that the script file can be executed asynchronously. The HTML parser does not need to pause at the point it reaches the script tag to fetch and execute, the execution can happen whenever the script becomes ready after being fetched in parallel with the document parsing.
+
+The defer attribute tells the browser to only execute the script file once the HTML document has been fully parsed.
+
 </details>
 
 <details>
