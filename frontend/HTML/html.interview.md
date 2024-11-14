@@ -966,7 +966,7 @@ Here is the code:
 43.<b> How do you add a comment in HTML and why would you use them?</b>
 </summary>
 
-To add a comment in HTML, wrap it between <!-- and -->.
+To add a comment in HTML, wrap it between `<!-- and -->`.
 
 For example:
 
@@ -1382,38 +1382,148 @@ The defer attribute tells the browser to only execute the script file once the H
 
 <details>
 <summary>
-53.<b></b>
+53.<b> Name 3 ways to decrease page load?</b>
 </summary>
+
+- LocalStorage
+- Caching resources
+- DNS-prefetch (sample below)
+- Keep resources on a CDN
 </details>
 
 <details>
 <summary>
-54.<b></b>
+54.<b> What ARIA and screenreaders are, and how to make a website accessible?</b>
 </summary>
+
+Screen readers are software programs that provide assistive technologies that allow people with disabilities (such as no sight, sound or mouse-ing ability) to use web applications. You can make your sites more accessible by following ARIA standards such as semantic HTML, alt attributes and using `[role=button]` in the expected ways
+
 </details>
 
 <details>
 <summary>
-55.<b></b>
+55.<b> What is the purpose of the alt attribute on images?</b>
 </summary>
+
+The `alt` attribute provides alternative information for an image if a user cannot view it. The `alt` attribute should be used to describe any images except those which only serve a decorative purposes, in which case it should be left empty.
+
 </details>
 
 <details>
 <summary>
-56.<b></b>
+56.<b>  Explain some of the pros and cons for CSS animations versus JavaScript animations?</b>
 </summary>
+
+Regarding optimization and responsiveness the debate bounces back and forth but, the concept is:
+
+- CSS animations allows the browser to choose where the animation processing is done, CPU or the GPU. (Central or Graphics Processing Unit)
+
+- That said, adding many layers to a document will eventually have a performance hit.
+
+- JS animation means more code for the user to download and for the developer to maintain.
+
+- Applying multiple animation types on an element is harder with CSS since all transforming power is in one property transform
+
+- CSS animations being declarative are not programmable therefore limited in capability.
 </details>
 
 <details>
 <summary>
-57.<b></b>
+57.<b> What does CORS stand for and what issue does it address?</b>
 </summary>
+
+`Cross-Origin Resource Sharing (CORS)` is a W3C spec that allows cross-domain communication from the browser. By building on top of the XMLHttpRequest object, CORS allows developers to work with the same idioms as same-domain requests. CORS gives web servers cross-domain access controls, which enable secure cross-domain data transfers.
+
 </details>
 
 <details>
 <summary>
-58.<b></b>
+58.<b> Ways to improve website performance</b>
 </summary>
+
+1. **Minimize HTTP Requests**
+
+**Sites are mainly slow because of too many (or too large) HTTP requests. We can eliminate unnecessary request;**
+
+- **combined files**: js to a file, css to a file
+- **CSS sprites**: CSS Sprites are the preferred method for reducing the number of image requests. Combine your background images into a single image and use the CSS background-image and background-position properties to display the desired image segment.
+
+2. **Use a Content Delivery Network CDN**
+
+- A CDN is essentially many optimized servers around the world that deliver web content to users based on their geographic location. This means big performance improvements for site users. Because, say, if a person accessing your site in India, they will be retrieving web content from a server nearby
+
+3. **Optimize Images:**
+
+**image sizes make a huge difference to site speed. The larger content/images, the slower the site. we could:**
+
+- **Changing the resolution**: reducing the “quality” of the image (and thereby the file size)
+- **Compressing the picture**: increasing the efficiency of image data storage
+- **Cropping the picture**: when cropping, you are cutting out unneeded areas and thus making the image smaller in size
+
+4. **Put Scripts at the Bottom:**
+
+Javascript files can load after the rest of your page. The simplest solution is to place your external Javascript files at the bottom of your page, just before the close of your body tag. Now more of your site can load before your scripts. Another method that allows even more control is to use the defer or async attributes when placing external .js files on your site.
+
+Async tags load the scripts while the rest of the page loads, but this means scripts can be loaded out of order. Basically, lighter files load first. This might be fine for some scripts, but can be disastrous for others.
+
+The defer attribute loads your scripts after your content has finished loading. It also runs the scripts in order. Just make sure your scripts run so late without breaking your site.
+
+Add an Expires or a Cache-Control Header
+
+Web page designs are getting richer and richer, which means more scripts, stylesheets, images, and Flash in the page. A first-time visitor to your page may have to make several HTTP requests, but by using the Expires header you make those components cacheable. This avoids unnecessary HTTP requests on subsequent page views. Expires headers are most often used with images, but they should be used on all components including scripts, stylesheets, and Flash components.
+Gzip Components
+
+Compression reduces response times by reducing the size of the HTTP response. Gzipping generally reduces the response size by about 70%.
+Put Stylesheets at the Top:
+
+This is because putting stylesheets in the HEAD allows the page to render progressively.
+Avoid CSS Expressions
+
+Use GET for AJAX Requests:
+
+Ajax is that it provides instantaneous feedback to the user because it requests information asynchronously from the backend web server
+Make JavaScript and CSS External:
+
+Using external files in the real world generally produces faster pages because the JavaScript and CSS files are cached by the browser. JavaScript and CSS that are inlined in HTML documents get downloaded every time the HTML document is requested. This reduces the number of HTTP requests that are needed, but increases the size of the HTML document. On the other hand, if the JavaScript and CSS are in external files cached by the browser, the size of the HTML document is reduced without increasing the number of HTTP requests.
+Use get to ajax request:
+
+POST is implemented in the browsers as a two-step process: sending the headers first, then sending data. So it's best to use GET, which only takes one TCP packet to send (unless you have a lot of cookies).
+No 404s:
+
+HTTP requests are expensive so making an HTTP request and getting a useless response (i.e. 404 Not Found) is totally unnecessary and will slow down the user experience without any benefit.
+Reduce Cookie Size:
+
+HTTP cookies are used for a variety of reasons such as authentication and personalization. Information about cookies is exchanged in the HTTP headers between web servers and browsers. It's important to keep the size of cookies as low as possible to minimize the impact on the user's response time.
+Reduce DNS Lookups
+
+Minify JavaScript and CSS
+
+Avoid Redirects
+
+Remove Duplicate Scripts
+
+Configure Etags
+
+Make Ajax Cacheable
+
+Post-load Components
+
+Preload Components
+
+Reduce the Number of DOM Elements
+
+Minimize the Number of iframes
+
+Minimize DOM Access
+
+Optimize CSS Sprites
+
+Don't Scale Images in HTML
+
+Make favicon.ico Small and Cacheable
+
+Avoid Empty Image src
+
 </details>
 
 <details>
