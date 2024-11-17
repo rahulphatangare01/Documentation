@@ -19,3 +19,6 @@ Differnt type of Software Architecture Pattern :
 												 								  
 								  
 								  
+System desgin 
+low level desgin 
+high level desgin 
