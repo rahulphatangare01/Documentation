@@ -1528,20 +1528,85 @@ Avoid Empty Image src
 
 <details>
 <summary>
-59.<b></b>
+59.<b> Explain the difference between layout, painting and compositing?</b>
 </summary>
+
+**JavaScript**: Typically JavaScript is used to handle work that will result in visual changes, whether it’s jQuery’s animate function, sorting a data set, or adding DOM elements to the page. It doesn’t have to be JavaScript that triggers a visual change, though: CSS Animations, Transitions, and the Web Animations API are also commonly used.
+
+**Style calculations**: This is the process of figuring out which CSS rules apply to which elements based on matching selectors, for example, .headline or .nav > .nav\_\_item. From there, once rules are known, they are applied and the final styles for each element are calculated.
+
+**Layout**: Once the browser knows which rules apply to an element it can begin to calculate how much space it takes up and where it is on screen. The web’s layout model means that one element can affect others, for example the width of the element typically affects its children’s widths and so on all the way up and down the tree, so the process can be quite involved for the browser.
+
+**Paint**: Painting is the process of filling in pixels. It involves drawing out text, colors, images, borders, and shadows, essentially every visual part of the elements. The drawing is typically done onto multiple surfaces, often called layers.
+
+**Compositing**: Since the parts of the page were drawn into potentially multiple layers they need to be drawn to the screen in the correct order so that the page renders correctly. This is especially important for elements that overlap another, since a mistake could result in one element appearing over the top of another incorrectly.
+
 </details>
 
 <details>
 <summary>
-60.<b></b>
+60.<b>  Why you would like to use semantic tag?</b>
 </summary>
+
+1. Search Engine Optimization, accessibility, repurposing, light code.
+2. Many visually impaired person rely on browser speech and semantic tag helps to interpret page content clearly.
+3. Search engine needs to understand page content to rank and semantic tag helps.
+4. Semantic code aids accessibility. Specially, many people whose eyes are not good rely on speech browsers to read pages to them. These programs cannot interpret pages very well unless they are clearly explained.
+5. Help Search engines to better understand pages. Search engine need to understand what your content is about when rank you properly on search engines. Semantic code tends to improve your placement on search engines, as it is easier for the "search engine spiders" to understand.
+6. It’s easier to read and edit, which saves time and money during maintenance.
 </details>
 
 <details>
 <summary>
-61.<b></b>
+61.<b> How to make page responsive?</b>
 </summary>
+
+Responsive Web Design is about using HTML and CSS to automatically resize, hide, shrink, or enlarge, a website, to make it look good on all devices (desktops, tablets, and phones).
+
+1. Setting the viewport
+
+```jsx harmony
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+2. Responsive Images
+   If the CSS width property is set to 100%, the image will be responsive and scale up and down
+
+```jsx harmony
+<img src="img.png" style="width:100%;">
+```
+
+3. Show different Images depending on Browser Width
+   The HTML <picture> element allows you to define different images for different browser window sizes.
+
+```jsx harmony
+<picture>
+  <source srcset="img_small.jpg" media="(max-width: 600px)">
+  <source srcset="img_large.jpg" media="(max-width: 1500px)">
+  <source srcset="img.jpg">
+  <img src="img_small.jpg" alt="Image">
+</picture>
+```
+
+4. Responsive Text Size
+   The text size can be set with a "vw" unit, which means the "viewport width". That way the text size will follow the size of the browser window.
+
+```jsx harmony
+<h1 style="font-size:10vw">Hello World</h1>
+```
+
+5. Media Queries
+   Using media queries you can define completely different styles for different browser sizes.
+
+```jsx harmony
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+```
+
 </details>
 
 <details>
