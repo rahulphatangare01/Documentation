@@ -1172,8 +1172,8 @@ Here are examples:
 </footer>
 ```
 
-**<s>**
-The <s> tag, which stands for "strike," is a non-semantic, obscure tag that is often replaced with a more meaningful tag, such as <del> for "deleted" content. However, it still visually strikes out its content.
+**`<s>`**
+The `<s>` tag, which stands for "strike," is a non-semantic, obscure tag that is often replaced with a more meaningful tag, such as` <del>` for "deleted" content. However, it still visually strikes out its content.
 
 **Use Case**
 
@@ -1186,7 +1186,7 @@ The <s> tag, which stands for "strike," is a non-semantic, obscure tag that is o
 **Visual Representation**
 Your discount code is: EXPIRED123
 
-**<mark>**
+**`<mark>`**
 The` <mark>` tag is used to **highlight** or set apart text without specifying any additional semantic information.
 
 **Use Case**
