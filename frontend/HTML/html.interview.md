@@ -1611,26 +1611,104 @@ Responsive Web Design is about using HTML and CSS to automatically resize, hide,
 
 <details>
 <summary>
-62.<b></b>
+62.<b>What is difference between span tag and div tag?</b>
 </summary>
+
+The primary difference between a div and a span is their default behavior. By default,
+a <div> is a `block-level-element` and a <span> is an `inline element`.
+
+```jsx harmony
+<div>
+  Demo Text, with <span>some other</span> text.
+</div>
+```
+
 </details>
 
 <details>
 <summary>
-63.<b></b>
+63.<b> What are optional closing tag?</b>
 </summary>
+
+`<p>, <li>, <td>, <tr>, <th>, <html>, <body>`, etc. don't have to provide end tag. Whenever browser hits a new tag it automatically ends the previous tag.
+
 </details>
 
 <details>
 <summary>
-64.<b></b>
+64.<b> What is the purpose of meta tags? </b>
 </summary>
+
+The META elements can be used to include name/value pairs describing properties of the `HTML` document, such as author, expiry date, a list of keywords, document author etc.
+
+```jsx harmony
+<!DOCTYPE html>
+<html>
+  <head>
+        <!--Recommended Meta Tags-->
+        <meta charset="utf-8">
+        <meta name="language" content="english">
+        <meta http-equiv="content-type" content="text/html">
+        <meta name="author" content="Author Name">
+        <meta name="designer" content="Designer Name">
+        <meta name="publisher" content="Publisher Name">
+        <meta name="no-email-collection" content="name@email.com">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+        <!--Search Engine Optimization Meta Tags-->
+        <meta name="description" content="Project Description">
+        <meta name="keywords" content="Software Engineer,Product Manager,Project Manager,Data Scientist">
+        <meta name="robots" content="index,follow">
+        <meta name="revisit-after" content="7 days">
+        <meta name="distribution" content="web">
+        <meta name="robots" content="noodp">
+
+        <!--Optional Meta Tags-->
+        <meta name="distribution" content="web">
+        <meta name="web_author" content="">
+        <meta name="rating" content="">
+        <meta name="subject" content="Personal">
+        <meta name="title" content=" - Official Website.">
+        <meta name="copyright" content="Copyright 2020">
+        <meta name="reply-to" content="">
+        <meta name="abstract" content="">
+        <meta name="city" content="Bangalore">
+        <meta name="country" content="INDIA">
+        <meta name="distribution" content="">
+        <meta name="classification" content="">
+
+        <!--Meta Tags for HTML pages on Mobile-->
+        <meta name="format-detection" content="telephone=yes"/>
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <!--http-equiv Tags-->
+        <meta http-equiv="Content-Style-Type" content="text/css">
+        <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+    <title>HTML5 Meta Tags</title>
+  </head>
+  <body>
+       ...
+  </body>
+</html>
+
+```
+
 </details>
 
 <details>
 <summary>
-65.<b></b>
+65.<b> Can you describe the difference between progressive enhancement and graceful degradation?</b>
 </summary>
+
+- **Graceful degradation** is when you initially serve the best possible user experience, with all modern functionality,
+  but use feature detection to “gracefully degrade” parts of your application with a fallback or polyfill.
+
+- **Progressive enhancement** ensures a page works at the lowest expected abilities of browsers.
+  So if you have a JavaScript web application that enhances a persons ability to send information to a database with features like ajax – at the very least you need to provide the ability for a person to send that same information without JavaScript enabled. In this case a simple form with full-page refresh will do what you need.
+
 </details>
 
 <details>
