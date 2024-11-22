@@ -1713,114 +1713,85 @@ The META elements can be used to include name/value pairs describing properties 
 
 <details>
 <summary>
-66.<b></b>
+66.<b> What is the purpose of cache busting and how can you achieve it?</b>
 </summary>
+
+Browsers have a cache to temporarily store files on websites so they don't need to be re-downloaded again when switching between pages or reloading the same page. The server is set up to send headers that tell the browser to store the file for a given amount of time. This greatly increases website speed and preserves bandwidth.
+
+However, it can cause problems when the website has been changed by developers because the user's cache still references old files. This can either leave them with old functionality or break a website if the cached CSS and JavaScript files are referencing elements that no longer exist, have moved or have been renamed.
+
+**Cache busting** is the process of forcing the browser to download the new files. This is done by naming the file something different to the old file.
+
+A common technique to force the browser to re-download the file is to append a query string to the end of the file.
+
+```jsx harmony
+<!-- src="js/script.js" => src="js/script.js?v=2" -->
+<script src="js/script.js?v=2"></script>
+```
+
+The browser considers it a different file but prevents the need to change the file name.
+
 </details>
 
 <details>
 <summary>
-67.<b></b>
+67.<b> Explain some of the pros and cons for CSS animations versus JavaScript animations?</b>
 </summary>
+
+Regarding optimization and responsiveness the debate bounces back and forth but, the concept is:
+
+1. CSS animations allows the browser to choose where the animation processing is done, CPU or the GPU. (Central or Graphics Processing Unit)
+2. That said, adding many layers to a document will eventually have a performance hit.
+3. JS animation means more code for the user to download and for the developer to maintain.
+4. Applying multiple animation types on an element is harder with CSS since all transforming power is in one property transform
+5. CSS animations being declarative are not programmable therefore limited in capability.
 </details>
 
 <details>
 <summary>
-68.<b></b>
+68.<b> What does the lang attribute in html do?</b>
 </summary>
+
+Helps in styling pages by using them in css :`lang()` pseudo class Spelling and grammar checkers Languade detection by search engines
+
 </details>
 
 <details>
 <summary>
-69.<b></b>
+69.<b> What is desktop first and mobile first design approach?</b>
 </summary>
+
+**Desktop first** : General selectors and styles designed to make the site look good on DESKTOP screens defined globally. But they affect all devices, and must be overridden by max-width media queries targeting minimum screen size
+
+**Mobile First** : General selectors and styles designed to make the site look good on small MOBILE screens go here. But they affect all devices, and must be overridden by min-width media queries targeting maximum scrren size
+
+In desktop first approach the media queries will be written with respect to max-width whereas in mobile first approach media queries will be written with respect to min-width
+
 </details>
 
 <details>
 <summary>
-70.<b></b>
+70.<b> Explain Microdata in HTML5?</b>
 </summary>
-</details>
 
-<details>
-<summary>
-71.<b></b>
-</summary>
-</details>
+**Microdata** is a standardized way to provide additional semantics in web pages. Microdata lets you define your own customized elements and start embedding custom properties in your web pages. At a high level, microdata consists of a group of name-value pairs.
 
-<details>
-<summary>
-72.<b></b>
-</summary>
-</details>
+The groups are called items, and each name-value pair is a **property**. Items and properties are represented by regular elements. Search engines benefit greatly from direct access to this structured data because it allows search engines to understand the information on web pages and provide more relevant results to users.
 
-<details>
-<summary>
-73.<b></b>
-</summary>
-</details>
+At a high level, microdata consists of a group of name-value pairs
 
-<details>
-<summary>
-74.<b></b>
-</summary>
-</details>
+`itemscope`:- To create an item
+`itemprop`:- To add a property to an item
+Example
 
-<details>
-<summary>
-75.<b></b>
-</summary>
-</details>
+```jsx harmony
+<div itemscope>
+    <p>My name is <span itemprop="name">Elizabeth</span>.</p>
+</div>
 
-<details>
-<summary>
-76.<b></b>
-</summary>
-</details>
+<div itemscope>
+    <p>My name is <span itemprop="name">Daniel</span>.</p>
+</div>
+```
 
-<details>
-<summary>
-77.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-78.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-79.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-80.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-81.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-82.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-83.<b></b>
-</summary>
-</details>
-
-<details>
-<summary>
-84.<b></b>
-</summary>
 </details>
