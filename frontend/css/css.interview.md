@@ -1,8 +1,6 @@
+# CSS interview Questions
 
-
-
-
-
+### Basic Questions
 
 <details>
 <summary>
@@ -10,20 +8,17 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 2.<b></b>
 </summary>
 </details>
 
-
 <details>
 <summary>
 3.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -37,13 +32,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 6.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -51,13 +44,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 8.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -65,13 +56,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 10.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -91,13 +80,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 14.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -111,13 +98,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 17.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -125,13 +110,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 19.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -139,13 +122,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 21.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -153,14 +134,11 @@
 </summary>
 </details>
 
-
-
 <details>
 <summary>
 23.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -168,13 +146,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 25.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -182,13 +158,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 27.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -196,13 +170,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 29.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -210,13 +182,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 31.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -224,21 +194,17 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 33.<b></b>
 </summary>
 </details>
 
-
-
 <details>
 <summary>
 34.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -252,14 +218,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 37.<b></b>
 </summary>
 </details>
-
-
 
 <details>
 <summary>
@@ -267,13 +230,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 39.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -281,13 +242,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 41.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -295,13 +254,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 43.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -309,13 +266,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 45.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -323,13 +278,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 47.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -337,13 +290,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 49.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -351,13 +302,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 51.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -365,22 +314,17 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 53.<b></b>
 </summary>
 </details>
 
-
-
 <details>
 <summary>
 54.<b></b>
 </summary>
 </details>
-
-
 
 <details>
 <summary>
@@ -394,13 +338,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 57.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -408,13 +350,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 59.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -422,13 +362,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 61.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -436,13 +374,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 63.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -450,13 +386,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 65.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -464,13 +398,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 67.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -478,14 +410,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 69.<b></b>
 </summary>
 </details>
-
-
 
 <details>
 <summary>
@@ -493,17 +422,11 @@
 </summary>
 </details>
 
-
-
-
-
 <details>
 <summary>
 71.<b></b>
 </summary>
 </details>
-
-
 
 <details>
 <summary>
@@ -511,13 +434,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 73.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -525,13 +446,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 75.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -539,13 +458,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 77.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -553,13 +470,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 79.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -567,13 +482,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 81.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -581,13 +494,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 83.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -595,15 +506,11 @@
 </summary>
 </details>
 
-
-
 <details>
 <summary>
 85.<b></b>
 </summary>
 </details>
-
-
 
 <details>
 <summary>
@@ -611,20 +518,17 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 87.<b></b>
 </summary>
 </details>
 
-
 <details>
 <summary>
 88.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -638,13 +542,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 91.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -652,13 +554,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 93.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -666,13 +566,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 95.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
@@ -680,13 +578,11 @@
 </summary>
 </details>
 
-
 <details>
 <summary>
 97.<b></b>
 </summary>
 </details>
-
 
 <details>
 <summary>
