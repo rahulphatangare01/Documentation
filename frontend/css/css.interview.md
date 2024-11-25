@@ -160,32 +160,65 @@ These just made 2D transformations, but there are also 3D transformation methods
 
 <details>
 <summary>
-6.<b></b>
+6.<b> Who maintains the CSS specifications? What do you understand by W3C?</b>
 </summary>
+
+**W3C** stands for **World Wide Web Consortium**. The mission of the W3C is to lead the Web to its full potential by developing relevant protocols and guidelines.This is achieved primarily by creating and publishing Web standards. By adopting the Web standards created by the W3C, hardware manufacturers and software developers can ensure their equipment and programs work with the latest Web technologies. For example, most Web browsers incorporate several W3C standards, which allows them to interpret the latest versions of HTML and CSS code. When browsers conform to the W3C standards, it also helps Web pages appear consistent across different browsers.
+
 </details>
 
 <details>
 <summary>
-7.<b></b>
+7.<b> Explain the difference between visibility: hidden; and display: none;? What are the pros and cons of using display:none?</b>
 </summary>
+
+- **visibility**: hidden simply hides the element but it will occupy space and affect the layout of the document.
+
+- **display**: none removes the element from the normal layout flow (causes DOM reflow). It will not affect the layout of the document nor occupy space.
 </details>
 
 <details>
 <summary>
-8.<b></b>
+8.<b> What is the purpose of the z-index and how is it used?</b>
 </summary>
+
+The `z-index` helps specify the stack order of positioned elements that may overlap one another. The `z-index` default value is zero, and can take on either a positive or negative number.
+
+An element with a higher `z-index` is always stacked above than a lower index.
+
+`z-index` can take the following values:
+
+1. **Auto**: Sets the stack order equal to its parents.
+2. **Number**: Orders the stack order.
+3. **Initial**: Sets this property to its default value (0).
+4. **Inherit**: Inherits this property from its parent element.
+
 </details>
 
 <details>
 <summary>
-9.<b></b>
+9.<b> How does z-index relate to positioning? Describe z-index and how stacking context is formed?</b>
 </summary>
+
+The `z-index` property specifies the stack order of elements. An element with a higher `z-index` stack order is always rendered in front of an element with a lower z-index stack order on the screen. `z-index` only works on positioned elements `position: absolute`, p`osition: relative`, or `position: fixed`. The default stack order of non-positioned elements is their order in the document.
+
 </details>
 
 <details>
 <summary>
-10.<b></b>
+10.<b> Which one would you prefer among px, em % or pt and why?</b>
 </summary>
+
+it depends on what you are trying to do.
+
+- **px** gives fine grained control and maintains alignment because 1 px or multiple of 1 px is guaranteed to look sharp. px is not cascade, this means if parent font-size is 20px and child 16px. child would be 16px.
+
+- **em** maintains relative size. you can have responsive fonts. em is the width of the letter 'm' in the selected typeface. However, this concept is tricky. 1em is equal to the current font-size of the element or the browser default. if u sent font-size to 16px then 1em = 16px. The common practice is to set default body font-size to 62.5% (equal to 10px). em is cascade
+
+- **%** sets font-size relative to the font size of the body. Hence, you have to set font-size of the body to a reasonable size. this is easy to use and does cascade. for example, if parent font-size is 20px and child font-size is 50%. child would be 10px.
+
+- **pt**(points) are traditionally used in print. 1pt = 1/72 inch and it is fixed-size unit.
+
 </details>
 
 <details>
