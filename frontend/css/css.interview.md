@@ -413,7 +413,7 @@ By far the best, and easiest solution to resolve the collapsing parent issue is 
 
 <details>
 <summary>
-21.<b></b>
+21.<b> Css Key Concepts?</b>
 </summary>
 </details>
 
