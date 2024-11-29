@@ -841,8 +841,70 @@ The HTML:
 
 <details>
 <summary>
-30.<b></b>
+30.<b>What is the CSS Box Model?</b>
 </summary>
+
+The Box Model is the foundational concept in CSS that describes the structure of an HTML element. It encompasses four key components: content, padding, border, and margin.
+
+**Box Model Components**
+**Content**: The actual element content, such as text, images, or other visual or interactive elements.
+**Padding**: Clears an area around the element's content, inside the border. The padding is transparent and doesn't have a background color or border.
+**Border**: A solid line that defines the boundary of the padding area.
+**Margin**: Clears an area around the element's border, outside any defined background or border.
+Visual Representation
+
+**Key Attributes**
+**Height & Width**: Element dimensions are determined by the sum of content width/height, and any padding, border, or margin added to it.
+**Border**: Specifies the size, style, and color of the border surrounding the content and padding.
+**Margin**: Defines the clearance between adjacent elements.
+
+Code Example: Box Model
+Here is the HTML code:
+
+```jsx harmony
+<div id="boxModelExample">This is an example of text within the Box Model.</div>
+```
+
+Here is the CSS code:
+
+```jsx harmony
+
+#boxModelExample {
+    border: 5px solid red;
+    padding: 20px;
+    margin: 20px;
+}
+```
+
+**Margins**
+
+`Auto Margins`
+When the surrounding container has a defined width, horizontal margins set to "auto" equally distribute the remaining horizontal space on both sides of the element, centering it within the container.
+
+```jsx harmony
+
+#autoMarginExample {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+```
+
+**Parent and Child Element Interplay**
+
+Box Sizing
+By default, the width of an element does not include padding or border. CSS can alter this behavior using the box-sizing property:
+
+**Content-Box** (default): The element's specified width and height are calculated excluding padding and border. When you change the width or height of an element using CSS, this is the model being used.
+**Border-Box**: The width and height comprise the content, padding, and border, avoiding the expansion of the box when adding padding or border to an element.
+This distinction aids in layout control and ensures uniformity.
+
+```jsx harmony
+#borderBoxExample {
+    box-sizing: border-box;
+}
+```
+
 </details>
 
 <details>
